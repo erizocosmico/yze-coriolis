@@ -1,7 +1,8 @@
 {
     "YZECORIOLIS.SheetStats": "Estadísticas",
     "YZECORIOLIS.SheetTalents": "Talentos",
-    "YZECORIOLIS.SheetItems": "Objetos",
+    "YZECORIOLIS.SheetItems": "Equipo",
+    "YZECORIOLIS.SheetTalentsItems": "Equipo y talentos",
     "YZECORIOLIS.SheetBio": "Biografía",
     "YZECORIOLIS.SheetNotes": "Notas",
 
@@ -73,7 +74,7 @@
     "YZECORIOLIS.GroupConcept": "Concepto de Grupo",
     "YZECORIOLIS.Category": "Categoría",
     "YZECORIOLIS.Description": "Descripción",
-    "YZECORIOLIS.Attributes": "Attributos",
+    "YZECORIOLIS.Attributes": "Atributos",
     "YZECORIOLIS.Add": "Añadir",
     "YZECORIOLIS.Edit": "Editar",
     "YZECORIOLIS.Delete": "Eliminar",
@@ -136,7 +137,7 @@
     "YZECORIOLIS.EditCriticalInjury": "Editar Herida Crítica",
     "YZECORIOLIS.DeleteCriticalInjury": "Eliminar Herida Crítica",
     "YZECORIOLIS.NewCriticalInjury": "Nueva Herida Crítica",
-    "YZECORIOLIS.ArmorRating": "Valor Armadura",
+    "YZECORIOLIS.ArmorRating": "Valor",
     "YZECORIOLIS.ExtraFeatures": "Rasgos Extra",
 
     "YZECORIOLIS.AttrStrength": "Físico",

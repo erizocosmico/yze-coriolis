@@ -26,8 +26,8 @@
             </div>
             <div class="bio-block">
                 <span class="bio-block-title">{{localize "YZECORIOLIS.PersonalProblem"}}</span>
-                <input class="bio-input" name="data.bio.personalProblem" type="text"
-                    value="{{data.bio.personalProblem}}" placeholder="{{localize "YZECORIOLIS.PersonalProblem"}}" />
+                <textarea class="bio-input" name="data.bio.personalProblem" type="text"
+                    placeholder="{{localize "YZECORIOLIS.PersonalProblem"}}">{{data.bio.personalProblem}}</textarea>
             </div>
             <div class="bio-block">
                 <span class="bio-block-title">{{localize "YZECORIOLIS.CrewPosition"}}</span>
@@ -42,14 +42,14 @@
             <div class="bio-block">
                 <span class="bio-block-title">{{localize "YZECORIOLIS.Appearance"}}:
                     {{localize "YZECORIOLIS.Face"}}</span>
-                <input class="bio-input" name="data.bio.appearance.face" type="text"
-                    value="{{data.bio.appearance.face}}" placeholder="{{localize "YZECORIOLIS.Appearance"}}" />
+                <textarea class="bio-input" name="data.bio.appearance.face" type="text"
+                placeholder="{{localize "YZECORIOLIS.Appearance"}}">{{data.bio.appearance.face}}</textarea>
             </div>
             <div class="bio-block">
                 <span class="bio-block-title">{{localize "YZECORIOLIS.Appearance"}}:
                     {{localize "YZECORIOLIS.Clothing"}}</span>
-                <input class="bio-input" name="data.bio.appearance.clothing" type="text"
-                    value="{{data.bio.appearance.clothing}}" placeholder="{{localize "YZECORIOLIS.Clothing"}}" />
+                <textarea class="bio-input" name="data.bio.appearance.clothing" type="text"
+                    placeholder="{{localize "YZECORIOLIS.Clothing"}}">{{data.bio.appearance.clothing}}</textarea>
             </div>
         </div>
 
@@ -71,8 +71,8 @@
             {{#each actor.data.relationships as |relation relKey|}}
             <li class="gear flexrow relation" data-item-id="{{relKey}}">
                 <div class=" gear-bg flexrow">
-                    <input class="bio-input relation-name" type="text" name="data.relationships.{{relKey}}.name"
-                        value="{{relation.name}}" placeholder="{{localize "YZECORIOLIS.Name"}}" />
+                    <textarea class="bio-input relation-name" type="text" name="data.relationships.{{relKey}}.name"
+                        placeholder="{{localize "YZECORIOLIS.Name"}}">{{relation.name}}</textarea>
                     <div class="flex1 flexrow buddy-box">
                         <input class="bio-checkbox" type="checkbox" name="data.relationships.{{relKey}}.buddy"
                             data-dtype="Boolean" {{checked relation.buddy}} />

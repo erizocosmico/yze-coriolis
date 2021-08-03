@@ -16,18 +16,6 @@
 /*  Sheet V2 Styles                          */
 /* ----------------------------------------- */
 @font-face {
-  font-family: "Cairo";
-  src: url("fonts/cairo/Cairo-Regular.ttf");
-}
-@font-face {
-  font-family: "Cairo-Bold";
-  src: url("fonts/cairo/Cairo-Bold.ttf");
-}
-@font-face {
-  font-family: "Cairo-SemiBold";
-  src: url("fonts/cairo/Cairo-SemiBold.ttf");
-}
-@font-face {
   font-family: "Play";
   src: url("fonts/play/Play-Regular.ttf");
 }
@@ -103,7 +91,7 @@
 }
 .mce-content-body {
   font-family: "Cairo";
-  color: #FDFF9D;
+  color: white;
   background-color: rgba(19, 27, 53, 0.45);
   padding: 5px;
 }

@@ -172,8 +172,11 @@ export class yzecoriolisActorSheet extends ActorSheet {
 
     // hook up scalable input fields
 
-
     html.find('.expandable-info').click(event => this._onItemSummary(event));
+
+    html.find('.skills .toggle').click(function () {
+      $(this.parentNode.parentNode).toggleClass('collapsed');
+    });
 
     // Everything below here is only needed if the sheet is editable
     if (!this.options.editable) return;

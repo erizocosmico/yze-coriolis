@@ -16,18 +16,6 @@
 /*  Sheet V2 Styles                          */
 /* ----------------------------------------- */
 @font-face {
-  font-family: "Cairo";
-  src: url("fonts/cairo/Cairo-Regular.ttf");
-}
-@font-face {
-  font-family: "Cairo-Bold";
-  src: url("fonts/cairo/Cairo-Bold.ttf");
-}
-@font-face {
-  font-family: "Cairo-SemiBold";
-  src: url("fonts/cairo/Cairo-SemiBold.ttf");
-}
-@font-face {
   font-family: "Play";
   src: url("fonts/play/Play-Regular.ttf");
 }
@@ -94,39 +82,34 @@
   border: 1px solid red;
 }
 @font-face {
-  font-family: 'Martel';
+  font-family: 'Chivo';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/martel/v5/PN_xRfK9oXHga0XtYQ.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/chivo/v12/va9I4kzIxd1KFoBv.ttf) format('truetype');
 }
 @font-face {
-  font-family: 'Martel';
+  font-family: 'Chivo';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/chivo/v12/va9F4kzIxd1KFrjTZMZ_.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Saira';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: normal;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/saira/v7/memWYa2wxmKQyPMrZX79wwYZQMhsyuShhKMjjbU9uXuA71rCosg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Saira';
   font-style: normal;
   font-weight: 800;
+  font-stretch: normal;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/martel/v5/PN_yRfK9oXHga0XVwe4ahQ.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmSU5vAw.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Me5Q.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url(https://fonts.gstatic.com/s/roboto/v20/KFOlCnqEu92Fr1MmEU9vAw.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/saira/v7/memWYa2wxmKQyPMrZX79wwYZQMhsyuShhKMjjbU9uXuA79rFosg.ttf) format('truetype');
 }
 .resource-label {
   font-weight: bold;
@@ -220,7 +203,7 @@
   text-align: right;
 }
 .window-app {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Chivo", sans-serif;
 }
 .rollable:hover,
 .rollable:focus {
@@ -232,11 +215,11 @@
   /*
     mixins
     */
+  /*-------------------------------------*/
+  /* List Mixins */
+  /*-------------------------------------*/
   /*
     Background & Container
-    */
-  /*
-    Key Art
     */
   /*
     Content Box
@@ -244,25 +227,29 @@
   /*
     Header
     */
+  /**
+   * Animated character info bars
+   */
 }
 .yzecoriolis.sheet.actor .player-text {
-  font-family: "Cairo";
-  color: #FDFF9D;
+  font-family: "Saira";
+  color: white;
 }
 .yzecoriolis.sheet.actor .player-text-bold {
-  font-family: "Cairo-Bold";
-  color: #FDFF9D;
+  font-family: "Saira";
+  color: white;
 }
 .yzecoriolis.sheet.actor .data-text {
-  font-family: "Cairo";
+  font-family: "Chivo";
   color: white;
 }
 .yzecoriolis.sheet.actor .data-text-bold {
-  font-family: "Cairo-Bold";
+  font-family: "Saira";
+  font-weight: 800;
   color: white;
 }
 .yzecoriolis.sheet.actor .data-text-semibold {
-  font-family: "Cairo-SemiBold";
+  font-family: "Saira";
   color: white;
 }
 .yzecoriolis.sheet.actor .line-item-entry {
@@ -272,7 +259,7 @@
   margin-bottom: 2px;
 }
 .yzecoriolis.sheet.actor .darkBlue.faded {
-  color: #7182BE;
+  color: #7182be;
 }
 .yzecoriolis.sheet.actor .hover-header-buttons {
   transition: color 275ms ease, transform 275ms ease, text-shadow 275ms ease;
@@ -281,21 +268,146 @@
   text-shadow: none;
 }
 .yzecoriolis.sheet.actor .hover-header-buttons:hover {
-  text-shadow: 0 0 5px #FF4500;
+  text-shadow: 0 0 5px #3f82a7;
   color: white;
   transform: scale(1.05);
 }
+.yzecoriolis.sheet.actor .vertical-list {
+  list-style: none;
+  overflow-y: auto;
+  padding: 0 5px 0 0;
+}
+.yzecoriolis.sheet.actor .category-header {
+  font-family: "Chivo";
+  color: white;
+  background-color: #b0cde4;
+  height: 24px;
+  align-content: center;
+  align-items: center;
+  margin-top: 20px;
+  font-weight: bold;
+  color: black;
+}
+.yzecoriolis.sheet.actor .category-header:first-of-type {
+  margin-top: 0px;
+}
+.yzecoriolis.sheet.actor .category-column-name {
+  font-size: 14px;
+  margin: 0px 0px 0px 5px;
+  text-transform: uppercase;
+}
+.yzecoriolis.sheet.actor .item-list-controls {
+  text-transform: uppercase;
+  flex: 0 0 100px;
+  margin-top: 2px;
+  text-align: right;
+  margin-right: 7px;
+  display: flex;
+  justify-content: flex-end;
+}
+.yzecoriolis.sheet.actor .item-status-icon {
+  color: #7182be;
+  flex-basis: 20px;
+}
+.yzecoriolis.sheet.actor .item-control-widget {
+  color: #7182be;
+  flex-basis: 20px;
+  transition: color 275ms ease, transform 275ms ease, text-shadow 275ms ease;
+}
+.yzecoriolis.sheet.actor .item-control-widget a:hover {
+  text-shadow: none;
+}
+.yzecoriolis.sheet.actor .item-control-widget:hover {
+  text-shadow: 0 0 5px #3f82a7;
+  color: white;
+  transform: scale(1.05);
+}
+.yzecoriolis.sheet.actor .item-control-add-widget {
+  color: #7182be;
+  flex-basis: 20px;
+  transition: color 275ms ease, transform 275ms ease, text-shadow 275ms ease;
+  color: black;
+  flex-basis: 100px;
+}
+.yzecoriolis.sheet.actor .item-control-add-widget a:hover {
+  text-shadow: none;
+}
+.yzecoriolis.sheet.actor .item-control-add-widget:hover {
+  text-shadow: 0 0 5px #3f82a7;
+  color: white;
+  transform: scale(1.05);
+}
+.yzecoriolis.sheet.actor .item-entry {
+  align-items: center;
+  font-family: "Chivo";
+  color: white;
+  border-bottom: 1px solid #4e606c;
+}
+.yzecoriolis.sheet.actor .item-entry .no-rows {
+  text-align: center;
+  padding: 0.3em;
+}
+.yzecoriolis.sheet.actor .item-entry-name-rollover {
+  transition: transform 275ms ease;
+}
+.yzecoriolis.sheet.actor .item-entry-name-rollover:hover {
+  transform: translateX(5px);
+}
+.yzecoriolis.sheet.actor .item-entry-name {
+  font-family: "Saira";
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  font-family: "Chivo";
+  font-weight: bold;
+  text-shadow: 0 0 4px black;
+}
+.yzecoriolis.sheet.actor .item-bg {
+  border-radius: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  flex: 0 0 100%;
+}
+.yzecoriolis.sheet.actor .item-summary {
+  flex: 0 0 100%;
+  margin-top: 2px;
+  padding-bottom: 2px;
+  display: flex;
+  justify-content: flex-end;
+}
+.yzecoriolis.sheet.actor .item-summary-wrapper {
+  border-radius: 3px;
+  flex: 0 0 570px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: 25px;
+}
+.yzecoriolis.sheet.actor .item-properties {
+  flex: 1;
+  margin-bottom: 5px;
+}
+.yzecoriolis.sheet.actor .item-properties .tag {
+  font-family: "Chivo";
+  color: white;
+  font-size: 12px;
+  border-radius: 3px;
+  border: 1px solid #9fb0ed;
+  padding: 0 5px 0 5px;
+  margin-right: 10px;
+}
 .yzecoriolis.sheet.actor input[type="text"] {
-  font-family: "Cairo";
-  color: #FDFF9D;
-  font-family: "Play";
+  font-family: "Saira", sans-serif;
   box-shadow: none;
   border: none;
-  font-size: 50px;
+  color: white;
 }
 .yzecoriolis.sheet.actor input[type="text"]::placeholder {
   /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #7B7C4C;
+  color: whitesmoke;
+}
+.yzecoriolis.sheet.actor ::-webkit-scrollbar-thumb {
+  background-color: #4e606c;
+  border-color: #b0cde4;
 }
 .yzecoriolis.sheet.actor input[type="checkbox"] {
   flex: 0 0 22px;
@@ -303,343 +415,200 @@
   height: 20px;
   margin: 3px 5px;
 }
-.yzecoriolis.sheet.actor input[type=number]::-webkit-inner-spin-button {
+.yzecoriolis.sheet.actor input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   -moz-appearance: textfield;
   appearance: textfield;
   margin: 0;
 }
 .yzecoriolis.sheet.actor .window-content {
-  background: linear-gradient(90deg, #000000 30.35%, rgba(0, 0, 0, 0) 100%), url("images/char-sheet-bg.jpg");
+  background: url("images/bg1.png");
+  background-size: cover;
+  padding: 0;
+  margin: 0;
 }
 .yzecoriolis.sheet.actor .sheet-container {
   display: grid;
-  grid-template-columns: 1fr 2.2fr;
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: 1fr 2.6fr;
   grid-column-gap: 10px;
   grid-row-gap: 20px;
-}
-.yzecoriolis.sheet.actor .key-art-container {
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 1;
-  grid-row-end: 4;
-  z-index: 1;
-}
-.yzecoriolis.sheet.actor .key-art-container .vertical-img {
-  border: 1px solid #ffffff;
-  box-sizing: border-box;
-  border-radius: 10px;
-}
-.yzecoriolis.sheet.actor .gradient-overlay {
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.635714) 28.12%, #000000 72.92%);
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 2;
-  grid-row-end: 4;
-  z-index: 2;
-}
-.yzecoriolis.sheet.actor .always-visible-stats {
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.635714) 28.12%, #000000 72.92%);
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 3;
-  grid-row-end: 4;
-  z-index: 3;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list {
-  color: #E5E5E5;
-  list-style: none;
-  padding: 0px;
-  margin: 0px;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry {
-  font-family: "Cairo";
-  color: white;
-  color: #E5E5E5;
-  font-size: 15px;
-  margin-left: 13px;
-  margin-right: 13px;
-  margin-bottom: 5px;
-  align-items: center;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .stat-label {
-  flex: 0 0 120px;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .capitalize {
-  text-transform: capitalize;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .number {
-  color: #FDFF9D;
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 1;
-  grid-row-end: 2;
-  text-align: center;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .number .input-value {
-  font-family: "Cairo";
-  color: white;
-  font-size: 17px;
-  color: #FDFF9D;
-  height: 18px;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .bar-bg {
-  padding: 0px 5px 0px 5px;
-  border: 1px solid #A4A4A4;
-  border-radius: 5px;
-  background-color: rgba(113, 130, 190, 0.35);
-  height: 27px;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .bar-value {
-  width: 20px;
-  text-align: center;
-  font-size: 16px;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .radiation-bar {
-  justify-content: space-between;
-  align-items: center;
-  padding: 0px 5px 0px 5px;
-  border: 1px solid #A4A4A4;
-  border-radius: 5px;
-  background-color: rgba(113, 130, 190, 0.35);
-  height: 27px;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .radiation-bar .bar-segment {
-  border-radius: 2px;
-  box-sizing: border-box;
-  flex: 1 1 10px;
-  height: 17px;
-  margin: 3.5px 1px;
-  background-color: #000000;
-  transition: background-color 275ms ease, border 275ms ease;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .radiation-bar .hover-to-decrease {
-  background-color: #44482C !important;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .radiation-bar .hover-to-increase {
-  border: 1px solid #B1C343;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .radiation-bar .bar-segment.on {
-  background-color: #B1C343;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .radiation-bar .bar-segment.on:hover {
-  transform: scale(1.05);
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .radiation-bar .bar-segment.off {
-  background-color: #000000;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .radiation-bar .bar-segment.off:hover {
-  transform: scale(1.05);
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .xp-bar {
-  justify-content: space-between;
-  align-items: center;
-  padding: 0px 5px 0px 5px;
-  border: 1px solid #A4A4A4;
-  border-radius: 5px;
-  background-color: rgba(113, 130, 190, 0.35);
-  height: 27px;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .xp-bar .bar-segment {
-  border-radius: 2px;
-  box-sizing: border-box;
-  flex: 1 1 10px;
-  height: 17px;
-  margin: 3.5px 1px;
-  background-color: #000000;
-  transition: background-color 275ms ease, border 275ms ease;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .xp-bar .hover-to-decrease {
-  background-color: #C7B4EE !important;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .xp-bar .hover-to-increase {
-  border: 1px solid #603FA7;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .xp-bar .bar-segment.on {
-  background-color: #603FA7;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .xp-bar .bar-segment.on:hover {
-  transform: scale(1.05);
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .xp-bar .bar-segment.off {
-  background-color: #000000;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .xp-bar .bar-segment.off:hover {
-  transform: scale(1.05);
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .rep-bar {
-  justify-content: space-between;
-  align-items: center;
-  padding: 0px 5px 0px 5px;
-  border: 1px solid #A4A4A4;
-  border-radius: 5px;
-  background-color: rgba(113, 130, 190, 0.35);
-  height: 27px;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .rep-bar .bar-segment {
-  border-radius: 2px;
-  box-sizing: border-box;
-  flex: 1 1 10px;
-  height: 17px;
-  margin: 3.5px 1px;
-  background-color: #000000;
-  transition: background-color 275ms ease, border 275ms ease;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .rep-bar .hover-to-decrease {
-  background-color: #732D3E !important;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .rep-bar .hover-to-increase {
-  border: 1px solid #CF4264;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .rep-bar .bar-segment.on {
-  background-color: #CF4264;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .rep-bar .bar-segment.on:hover {
-  transform: scale(1.05);
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .rep-bar .bar-segment.off {
-  background-color: #000000;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .rep-bar .bar-segment.off:hover {
-  transform: scale(1.05);
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .hp-bar {
-  justify-content: space-between;
-  align-items: center;
-  padding: 0px 5px 0px 5px;
-  border: 1px solid #A4A4A4;
-  border-radius: 5px;
-  background-color: rgba(113, 130, 190, 0.35);
-  height: 27px;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .hp-bar .bar-segment {
-  border-radius: 2px;
-  box-sizing: border-box;
-  flex: 1 1 10px;
-  height: 17px;
-  margin: 3.5px 1px;
-  background-color: #000000;
-  transition: background-color 275ms ease, border 275ms ease;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .hp-bar .hover-to-decrease {
-  background-color: #5C0000 !important;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .hp-bar .hover-to-increase {
-  border: 1px solid #125C00;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .hp-bar .bar-segment.on {
-  background-color: #125C00;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .hp-bar .bar-segment.on:hover {
-  transform: scale(1.05);
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .hp-bar .bar-segment.off {
-  background-color: #000000;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .hp-bar .bar-segment.off:hover {
-  transform: scale(1.05);
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .mind-bar {
-  justify-content: space-between;
-  align-items: center;
-  padding: 0px 5px 0px 5px;
-  border: 1px solid #A4A4A4;
-  border-radius: 5px;
-  background-color: rgba(113, 130, 190, 0.35);
-  height: 27px;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .mind-bar .bar-segment {
-  border-radius: 2px;
-  box-sizing: border-box;
-  flex: 1 1 10px;
-  height: 17px;
-  margin: 3.5px 1px;
-  background-color: #000000;
-  transition: background-color 275ms ease, border 275ms ease;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .mind-bar .hover-to-decrease {
-  background-color: #081F43 !important;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .mind-bar .hover-to-increase {
-  border: 1px solid #3F82A7;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .mind-bar .bar-segment.on {
-  background-color: #3F82A7;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .mind-bar .bar-segment.on:hover {
-  transform: scale(1.05);
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .mind-bar .bar-segment.off {
-  background-color: #000000;
-}
-.yzecoriolis.sheet.actor .always-visible-stats .perma-stats-list .entry .mind-bar .bar-segment.off:hover {
-  transform: scale(1.05);
+  background: url("images/border-up.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  padding: 1.5em 1em;
 }
 .yzecoriolis.sheet.actor .char-content-wrapper {
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 1;
   grid-row-end: 4;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 98px 1fr;
-  grid-column-gap: 10px;
-  grid-row-gap: 15px;
 }
 .yzecoriolis.sheet.actor .sheet-header {
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 1;
-  grid-row-end: 2;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(2, 1fr);
-  grid-column-gap: 10px;
-  grid-row-gap: 2px;
+  flex-direction: column;
+  align-items: flex-start;
+  /*-------------------------------------*/
+  /* Critical Injuries*/
+  /*-------------------------------------*/
 }
-.yzecoriolis.sheet.actor .sheet-header hr {
-  border: 0.5px solid #9FB0ED;
-}
-.yzecoriolis.sheet.actor .sheet-header .name-plate {
-  font-style: normal;
-  font-weight: normal;
-  font-size: 50px;
-  line-height: 58px;
-  justify-self: center;
+.yzecoriolis.sheet.actor .sheet-header .char-name {
+  width: 100%;
+  font-family: "Saira";
+  font-weight: bold;
+  font-size: 2.5em;
   text-align: center;
-  grid-column-start: 1;
-  grid-column-end: 4;
 }
-.yzecoriolis.sheet.actor .sheet-header .name-plate .char-name-input {
-  height: 50px;
+.yzecoriolis.sheet.actor .sheet-header .char-name input[type="text"] {
+  height: 1.6em;
+  padding-top: 0.5em;
+}
+.yzecoriolis.sheet.actor .sheet-header .char-info {
+  width: 100%;
+  padding: 1.5em 0.5em 2em 0.5em;
+}
+.yzecoriolis.sheet.actor .sheet-header .char-info .char-info-row {
+  display: flex;
+}
+.yzecoriolis.sheet.actor .sheet-header .char-info .char-info-row + .char-info-row {
+  margin-top: 1em;
+}
+.yzecoriolis.sheet.actor .sheet-header .char-info .char-info-row .char-info-col {
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+.yzecoriolis.sheet.actor .sheet-header .char-info .char-info-row .char-info-col + .char-info-col {
+  margin-left: 1em;
+}
+.yzecoriolis.sheet.actor .sheet-header .char-info .char-info-row .char-info-col .bar {
+  width: 55%;
+}
+.yzecoriolis.sheet.actor .sheet-header .char-info .char-info-row .char-info-col .char-info-label {
+  color: white;
+  font-family: Saira;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding-right: 1em;
+  width: 45%;
+  text-shadow: 0 0 4px black;
+}
+.yzecoriolis.sheet.actor .sheet-header .char-info .char-info-row .char-info-col .char-info-value {
+  width: 55%;
+}
+.yzecoriolis.sheet.actor .sheet-header .char-info .char-info-row .char-info-col .char-info-value input {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 0;
+}
+.yzecoriolis.sheet.actor .sheet-header .char-info .char-info-row .char-info-col .char-info-value input:hover,
+.yzecoriolis.sheet.actor .sheet-header .char-info .char-info-row .char-info-col .char-info-value input:focus {
+  border-bottom-color: white;
+}
+.yzecoriolis.sheet.actor .sheet-header .critical-injuries {
+  width: 100%;
+  margin-bottom: 1em;
+}
+.yzecoriolis.sheet.actor .sheet-header .critical-injury-list {
+  list-style: none;
+  overflow-y: auto;
+  padding: 0 5px 0 0;
+}
+.yzecoriolis.sheet.actor .sheet-header .critical-injury-list .critical-injury-category-header {
+  font-family: "Chivo";
+  color: white;
+  background-color: #b0cde4;
+  height: 24px;
+  align-content: center;
+  align-items: center;
+  margin-top: 20px;
+  font-weight: bold;
+  color: black;
+}
+.yzecoriolis.sheet.actor .sheet-header .critical-injury-list .critical-injury-category-header:first-of-type {
+  margin-top: 0px;
+}
+.yzecoriolis.sheet.actor .sheet-header .critical-injury-list .critical-injury-category-name {
+  font-size: 14px;
+  margin: 0px 0px 0px 5px;
   text-transform: uppercase;
 }
-.yzecoriolis.sheet.actor .sheet-header .char-class {
-  font-family: "Cairo";
-  color: #FDFF9D;
-  font-family: "Play";
-  font-size: 18px;
-  grid-column-start: 1;
-  grid-column-end: 4;
-  grid-row-start: 2;
-  grid-row-end: 3;
-  border-top: 0.5px solid #9FB0ED;
-  text-align: center;
-  padding-top: 10px;
-}
-.yzecoriolis.sheet.actor .sheet-header .char-class .char-class-input {
-  font-size: 18px;
+.yzecoriolis.sheet.actor .sheet-header .critical-injury-list .critical-injury-controls {
   text-transform: uppercase;
-  height: 32px;
+  flex: 0 0 100px;
+  margin-top: 2px;
+  text-align: right;
+  margin-right: 7px;
+  display: flex;
+  justify-content: flex-end;
+}
+.yzecoriolis.sheet.actor .sheet-header .critical-injury-list .critical-injury-control-widget {
+  color: #7182be;
+  flex-basis: 20px;
+  transition: color 275ms ease, transform 275ms ease, text-shadow 275ms ease;
+}
+.yzecoriolis.sheet.actor .sheet-header .critical-injury-list .critical-injury-control-widget a:hover {
+  text-shadow: none;
+}
+.yzecoriolis.sheet.actor .sheet-header .critical-injury-list .critical-injury-control-widget:hover {
+  text-shadow: 0 0 5px #3f82a7;
+  color: white;
+  transform: scale(1.05);
+}
+.yzecoriolis.sheet.actor .sheet-header .critical-injury-list .critical-injury-control-add-widget {
+  color: #7182be;
+  flex-basis: 20px;
+  transition: color 275ms ease, transform 275ms ease, text-shadow 275ms ease;
+  color: black;
+  flex-basis: 100px;
+}
+.yzecoriolis.sheet.actor .sheet-header .critical-injury-list .critical-injury-control-add-widget a:hover {
+  text-shadow: none;
+}
+.yzecoriolis.sheet.actor .sheet-header .critical-injury-list .critical-injury-control-add-widget:hover {
+  text-shadow: 0 0 5px #3f82a7;
+  color: white;
+  transform: scale(1.05);
+}
+.yzecoriolis.sheet.actor .sheet-header .critical-injury-list .critical-injury {
+  align-items: center;
+  font-family: "Chivo";
+  color: white;
+  border-bottom: 1px solid #4e606c;
+}
+.yzecoriolis.sheet.actor .sheet-header .critical-injury-list .critical-injury .no-rows {
+  text-align: center;
+  padding: 0.3em;
+}
+.yzecoriolis.sheet.actor .sheet-header .critical-injury-list .critical-injury-bg {
+  border-radius: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  flex: 0 0 100%;
+}
+.yzecoriolis.sheet.actor .sheet-header .critical-injury-list .critical-injury-name,
+.yzecoriolis.sheet.actor .sheet-header .critical-injury-list .critical-injury-description {
+  font-family: "Saira";
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  font-family: "Chivo";
+  font-weight: bold;
+  text-shadow: 0 0 4px black;
+  align-items: center;
+}
+.yzecoriolis.sheet.actor .sheet-header .critical-injury-list .critical-injury-description {
+  font-weight: 400;
+}
+.yzecoriolis.sheet.actor .sheet-header .critical-injury-list .expanded {
+  height: auto;
+}
+.yzecoriolis.sheet.actor .sheet-header .critical-injury-list .critical-injury-controls {
+  align-items: center;
 }
 .yzecoriolis.sheet.actor .sheet-body {
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 2;
   grid-row-end: 3;
-  border-radius: 5px;
-  background-color: rgba(113, 130, 190, 0.35);
+  background-color: transparent;
   display: flex;
   flex-direction: column;
   /*-------------------------------------*/
@@ -649,12 +618,6 @@
   /* Skills List*/
   /*-------------------------------------*/
   /*-------------------------------------*/
-  /* Critical Injuries*/
-  /*-------------------------------------*/
-  /*-------------------------------------*/
-  /* List Mixins */
-  /*-------------------------------------*/
-  /*-------------------------------------*/
   /* Talent List */
   /*-------------------------------------*/
   /*-------------------------------------*/
@@ -662,28 +625,30 @@
   /*-------------------------------------*/
 }
 .yzecoriolis.sheet.actor .sheet-body .navigation {
-  padding: 2px;
   display: flex;
   flex-direction: row;
-  border-radius: 5px 5px 0px 0px;
-  height: 24px;
-  border: none;
-  background-color: rgba(113, 130, 190, 0.44);
-  justify-content: space-between;
+  background-color: black;
+  align-items: center;
+  border: 0;
+  margin-bottom: 2em;
+}
+.yzecoriolis.sheet.actor .sheet-body .navigation .item-bgm {
+  color: rgba(255, 255, 255, 0.7);
 }
 .yzecoriolis.sheet.actor .sheet-body .navigation .item.active {
   text-decoration: none;
   color: white;
+  box-shadow: 0 2px 0 white;
 }
 .yzecoriolis.sheet.actor .sheet-body .navigation .nav-link {
-  font-family: "Cairo-Bold";
+  font-family: "Saira";
+  font-weight: 800;
   color: white;
   text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.25);
-  color: #9FB0ED;
   transition: text-shadow 275ms ease;
+  height: 100%;
   text-transform: uppercase;
   font-size: 18px;
-  line-height: 19px;
   text-align: center;
   flex: 1;
 }
@@ -721,7 +686,7 @@
   filter: brightness(1.5);
 }
 .yzecoriolis.sheet.actor .sheet-body .attribute-list .attr-block {
-  border: 3px solid #9FB0ED;
+  border: 3px solid #9fb0ed;
   box-sizing: border-box;
   border-radius: 3px;
   background-color: rgba(19, 27, 53, 0.25);
@@ -754,8 +719,8 @@
   background-clip: padding-box;
 }
 .yzecoriolis.sheet.actor .sheet-body .attribute-list .attr-num-display {
-  font-family: "Cairo";
-  color: #FDFF9D;
+  font-family: "Saira";
+  color: white;
   font-size: 48px;
   font-weight: bold;
   line-height: 60px;
@@ -768,12 +733,12 @@
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
 }
 .yzecoriolis.sheet.actor .sheet-body .attribute-list .attr-name {
-  font-family: "Cairo";
+  font-family: "Chivo";
   color: white;
   font-size: 14px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #9FB0ED;
+  color: #9fb0ed;
 }
 .yzecoriolis.sheet.actor .sheet-body .attribute-list .attr-rollable img {
   border: none;
@@ -793,7 +758,7 @@
   margin-right: 10px;
 }
 .yzecoriolis.sheet.actor .sheet-body .skills-list-group .skill-header {
-  font-family: "Cairo";
+  font-family: "Chivo";
   color: white;
   font-size: 14px;
   text-align: center;
@@ -812,16 +777,16 @@
   filter: brightness(1.5);
 }
 .yzecoriolis.sheet.actor .sheet-body .skills-list-group .skill .rollable:hover {
-  text-shadow: 0 0 5px #FF4500;
+  text-shadow: 0 0 5px #ff4500;
 }
 .yzecoriolis.sheet.actor .sheet-body .skills-list-group .skill .rollable:hover .skill-image {
   background-image: url("icons/rolling-dices.svg");
   background-size: 30px;
 }
 .yzecoriolis.sheet.actor .sheet-body .skills-list-group .skill h4 {
-  font-family: "Cairo";
+  font-family: "Chivo";
   color: white;
-  color: #9FB0ED;
+  color: #9fb0ed;
   font-weight: bold;
   font-size: 13px;
   flex: 1;
@@ -893,244 +858,21 @@
   height: 25px;
   text-align: center;
 }
-.yzecoriolis.sheet.actor .sheet-body .critical-injuries-list {
-  list-style: none;
-  overflow-y: auto;
-  max-height: 146px;
-  height: 146px;
-  padding: 0px;
-  align-items: center;
-  margin: 0 10px;
-}
-.yzecoriolis.sheet.actor .sheet-body .critical-injuries-list .crit-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  border-radius: 3px;
-  background-color: rgba(113, 130, 190, 0.44);
-  margin-bottom: 5px;
-  height: 24px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-.yzecoriolis.sheet.actor .sheet-body .critical-injuries-list .crit-header h4 {
-  font-family: "Cairo";
-  color: white;
-  font-size: 14px;
-  text-align: center;
-  text-transform: uppercase;
-}
-.yzecoriolis.sheet.actor .sheet-body .critical-injuries-list .injury {
-  align-items: center;
-  background: rgba(19, 27, 53, 0.45);
-  border-radius: 3px;
-  padding: 2px;
-  margin-bottom: 2px;
-  height: 26px;
-}
-.yzecoriolis.sheet.actor .sheet-body .critical-injuries-list .crit-add-controls {
-  font-family: "Cairo";
-  color: white;
-  font-size: 14px;
-  text-align: center;
-  text-transform: uppercase;
-  padding-right: 2px;
-  color: #9FB0ED;
-}
-.yzecoriolis.sheet.actor .sheet-body .critical-injuries-list .crit-controls {
-  flex: 0 0 80px;
-  color: #7182BE;
-  display: flex;
-  justify-content: flex-end;
-  margin-right: 5px;
-}
-.yzecoriolis.sheet.actor .sheet-body .critical-injuries-list .crit-control-widget {
-  flex-basis: 20px;
-  text-align: right;
-  transition: color 275ms ease, transform 275ms ease, text-shadow 275ms ease;
-}
-.yzecoriolis.sheet.actor .sheet-body .critical-injuries-list .crit-control-widget a:hover {
-  text-shadow: none;
-}
-.yzecoriolis.sheet.actor .sheet-body .critical-injuries-list .crit-control-widget:hover {
-  text-shadow: 0 0 5px #FF4500;
-  color: white;
-  transform: scale(1.05);
-}
-.yzecoriolis.sheet.actor .sheet-body .critical-injuries-list .injury-display {
-  font-family: "Cairo";
-  color: #FDFF9D;
-  font-size: 14px;
-  font-weight: bold;
-  color: #FFA903;
-}
-.yzecoriolis.sheet.actor .sheet-body .critical-injuries-list .injury-description {
-  color: #9FB0ED;
-  flex: 0 0 400px;
-  width: 400px;
-}
-.yzecoriolis.sheet.actor .sheet-body .critical-injuries-list .injury-description span {
-  white-space: nowrap !important;
-}
-.yzecoriolis.sheet.actor .sheet-body .critical-injuries-list .injury-description p {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.yzecoriolis.sheet.actor .sheet-body .vertical-list {
-  list-style: none;
-  overflow-y: auto;
-  max-height: 580px;
-  padding: 0 5px 0 0;
-  margin-top: 24px;
-  margin-left: 32px;
-  margin-right: 32px;
-}
-.yzecoriolis.sheet.actor .sheet-body .category-header {
-  font-family: "Cairo";
-  color: white;
-  border-radius: 3px;
-  background-color: rgba(113, 130, 190, 0.44);
-  height: 24px;
-  margin-bottom: 5px;
-  align-content: center;
-  align-items: center;
-  margin-top: 20px;
-}
-.yzecoriolis.sheet.actor .sheet-body .category-header:first-of-type {
-  margin-top: 0px;
-}
-.yzecoriolis.sheet.actor .sheet-body .category-column-name {
-  font-size: 14px;
-  margin: 0px 0px 0px 5px;
-  text-transform: uppercase;
-}
-.yzecoriolis.sheet.actor .sheet-body .item-list-controls {
-  text-transform: uppercase;
-  flex: 0 0 100px;
-  margin-top: 2px;
-  text-align: right;
-  margin-right: 7px;
-  display: flex;
-  justify-content: flex-end;
-}
-.yzecoriolis.sheet.actor .sheet-body .item-status-icon {
-  color: #7182BE;
-  flex-basis: 20px;
-}
-.yzecoriolis.sheet.actor .sheet-body .item-control-widget {
-  color: #7182BE;
-  flex-basis: 20px;
-  transition: color 275ms ease, transform 275ms ease, text-shadow 275ms ease;
-}
-.yzecoriolis.sheet.actor .sheet-body .item-control-widget a:hover {
-  text-shadow: none;
-}
-.yzecoriolis.sheet.actor .sheet-body .item-control-widget:hover {
-  text-shadow: 0 0 5px #FF4500;
-  color: white;
-  transform: scale(1.05);
-}
-.yzecoriolis.sheet.actor .sheet-body .item-control-add-widget {
-  color: #7182BE;
-  flex-basis: 20px;
-  transition: color 275ms ease, transform 275ms ease, text-shadow 275ms ease;
-  color: #9FB0ED;
-  flex-basis: 100px;
-}
-.yzecoriolis.sheet.actor .sheet-body .item-control-add-widget a:hover {
-  text-shadow: none;
-}
-.yzecoriolis.sheet.actor .sheet-body .item-control-add-widget:hover {
-  text-shadow: 0 0 5px #FF4500;
-  color: white;
-  transform: scale(1.05);
-}
-.yzecoriolis.sheet.actor .sheet-body .item-entry {
-  align-items: center;
-  font-family: "Cairo";
-  color: white;
-  margin-bottom: 2px;
-}
-.yzecoriolis.sheet.actor .sheet-body .item-entry-name-rollover {
-  transition: transform 275ms ease;
-}
-.yzecoriolis.sheet.actor .sheet-body .item-entry-name-rollover:hover {
-  transform: translateX(5px);
-}
-.yzecoriolis.sheet.actor .sheet-body .item-entry-name {
-  font-family: "Cairo-SemiBold";
-  color: white;
-  color: #FFA903;
-  font-size: 15px;
-  cursor: pointer;
-}
-.yzecoriolis.sheet.actor .sheet-body .item-bg {
-  background-color: rgba(19, 27, 53, 0.45);
-  border-radius: 3px;
-  padding-left: 5px;
-  padding-right: 5px;
-  flex: 0 0 100%;
-}
-@keyframes flicker {
-  0% {
-    background-color: rgba(59, 84, 166, 0.45);
-  }
-  100% {
-    background-color: rgba(19, 27, 53, 0.45);
-  }
-}
-.yzecoriolis.sheet.actor .sheet-body .item-bg:hover {
-  animation: flicker 1.2s;
-  animation-fill-mode: forwards;
-}
-.yzecoriolis.sheet.actor .sheet-body .item-summary {
-  flex: 0 0 100%;
-  margin-top: 2px;
-  padding-bottom: 2px;
-  display: flex;
-  justify-content: flex-end;
-}
-.yzecoriolis.sheet.actor .sheet-body .item-summary-wrapper {
-  background-color: rgba(19, 27, 53, 0.45);
-  border-radius: 3px;
-  flex: 0 0 570px;
-  padding-left: 15px;
-  padding-right: 15px;
-  margin-left: 25px;
-}
-.yzecoriolis.sheet.actor .sheet-body .item-properties {
-  flex: 1;
-  margin-bottom: 5px;
-}
-.yzecoriolis.sheet.actor .sheet-body .item-properties .tag {
-  font-family: "Cairo";
-  color: white;
-  font-size: 12px;
-  border-radius: 3px;
-  border: 1px solid #9FB0ED;
-  padding: 0 5px 0 5px;
-  margin-right: 10px;
-}
 .yzecoriolis.sheet.actor .sheet-body .talent-list {
   list-style: none;
   overflow-y: auto;
-  max-height: 580px;
   padding: 0 5px 0 0;
-  margin-top: 24px;
-  margin-left: 32px;
-  margin-right: 32px;
 }
 .yzecoriolis.sheet.actor .sheet-body .talent-list .talent-category-header {
-  font-family: "Cairo";
+  font-family: "Chivo";
   color: white;
-  border-radius: 3px;
-  background-color: rgba(113, 130, 190, 0.44);
+  background-color: #b0cde4;
   height: 24px;
-  margin-bottom: 5px;
   align-content: center;
   align-items: center;
   margin-top: 20px;
+  font-weight: bold;
+  color: black;
 }
 .yzecoriolis.sheet.actor .sheet-body .talent-list .talent-category-header:first-of-type {
   margin-top: 0px;
@@ -1150,7 +892,7 @@
   justify-content: flex-end;
 }
 .yzecoriolis.sheet.actor .sheet-body .talent-list .talent-control-widget {
-  color: #7182BE;
+  color: #7182be;
   flex-basis: 20px;
   transition: color 275ms ease, transform 275ms ease, text-shadow 275ms ease;
 }
@@ -1158,56 +900,50 @@
   text-shadow: none;
 }
 .yzecoriolis.sheet.actor .sheet-body .talent-list .talent-control-widget:hover {
-  text-shadow: 0 0 5px #FF4500;
+  text-shadow: 0 0 5px #3f82a7;
   color: white;
   transform: scale(1.05);
 }
 .yzecoriolis.sheet.actor .sheet-body .talent-list .talent-control-add-widget {
-  color: #7182BE;
+  color: #7182be;
   flex-basis: 20px;
   transition: color 275ms ease, transform 275ms ease, text-shadow 275ms ease;
-  color: #9FB0ED;
+  color: black;
   flex-basis: 100px;
 }
 .yzecoriolis.sheet.actor .sheet-body .talent-list .talent-control-add-widget a:hover {
   text-shadow: none;
 }
 .yzecoriolis.sheet.actor .sheet-body .talent-list .talent-control-add-widget:hover {
-  text-shadow: 0 0 5px #FF4500;
+  text-shadow: 0 0 5px #3f82a7;
   color: white;
   transform: scale(1.05);
 }
 .yzecoriolis.sheet.actor .sheet-body .talent-list .talent {
   align-items: center;
-  font-family: "Cairo";
+  font-family: "Chivo";
   color: white;
-  margin-bottom: 2px;
+  border-bottom: 1px solid #4e606c;
+  padding: 0.5em 0;
+}
+.yzecoriolis.sheet.actor .sheet-body .talent-list .talent .no-rows {
+  text-align: center;
+  padding: 0.3em;
 }
 .yzecoriolis.sheet.actor .sheet-body .talent-list .talent-bg {
-  background-color: rgba(19, 27, 53, 0.45);
   border-radius: 3px;
   padding-left: 5px;
   padding-right: 5px;
   flex: 0 0 100%;
 }
-@keyframes flicker {
-  0% {
-    background-color: rgba(59, 84, 166, 0.45);
-  }
-  100% {
-    background-color: rgba(19, 27, 53, 0.45);
-  }
-}
-.yzecoriolis.sheet.actor .sheet-body .talent-list .talent-bg:hover {
-  animation: flicker 1.2s;
-  animation-fill-mode: forwards;
-}
 .yzecoriolis.sheet.actor .sheet-body .talent-list .talent-name {
-  font-family: "Cairo-SemiBold";
+  font-family: "Saira";
   color: white;
-  color: #FFA903;
   font-size: 15px;
   cursor: pointer;
+  font-family: "Chivo";
+  font-weight: bold;
+  text-shadow: 0 0 4px black;
   transition: transform 275ms ease;
 }
 .yzecoriolis.sheet.actor .sheet-body .talent-list .talent-name:hover {
@@ -1216,34 +952,26 @@
 .yzecoriolis.sheet.actor .sheet-body .talent-list .expanded {
   height: auto;
 }
-.yzecoriolis.sheet.actor .sheet-body .gear-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 600px;
+.yzecoriolis.sheet.actor .sheet-body .talent-list .talent-controls {
+  align-items: center;
 }
 .yzecoriolis.sheet.actor .sheet-body .gear-list {
-  list-style: none;
-  overflow-y: auto;
-  max-height: 580px;
-  padding: 0 5px 0 0;
-  margin-top: 24px;
-  margin-left: 32px;
-  margin-right: 32px;
-  margin-left: 15px;
-  margin-right: 15px;
-  max-height: 570px;
+  padding: 0;
+  margin: 0;
+}
+.yzecoriolis.sheet.actor .sheet-body .gear-list + .gear-list {
+  margin-top: 1em;
 }
 .yzecoriolis.sheet.actor .sheet-body .gear-list .gear-category-header {
-  font-family: "Cairo";
+  font-family: "Chivo";
   color: white;
-  border-radius: 3px;
-  background-color: rgba(113, 130, 190, 0.44);
+  background-color: #b0cde4;
   height: 24px;
-  margin-bottom: 5px;
   align-content: center;
   align-items: center;
   margin-top: 20px;
+  font-weight: bold;
+  color: black;
 }
 .yzecoriolis.sheet.actor .sheet-body .gear-list .gear-category-header:first-of-type {
   margin-top: 0px;
@@ -1269,7 +997,7 @@
   justify-content: flex-end;
 }
 .yzecoriolis.sheet.actor .sheet-body .gear-list .gear-control-widget {
-  color: #7182BE;
+  color: #7182be;
   flex-basis: 20px;
   transition: color 275ms ease, transform 275ms ease, text-shadow 275ms ease;
 }
@@ -1277,41 +1005,47 @@
   text-shadow: none;
 }
 .yzecoriolis.sheet.actor .sheet-body .gear-list .gear-control-widget:hover {
-  text-shadow: 0 0 5px #FF4500;
+  text-shadow: 0 0 5px #3f82a7;
   color: white;
   transform: scale(1.05);
 }
 .yzecoriolis.sheet.actor .sheet-body .gear-list .gear-control-add-widget {
-  color: #7182BE;
+  color: #7182be;
   flex-basis: 20px;
   transition: color 275ms ease, transform 275ms ease, text-shadow 275ms ease;
-  color: #9FB0ED;
+  color: black;
   flex-basis: 100px;
 }
 .yzecoriolis.sheet.actor .sheet-body .gear-list .gear-control-add-widget a:hover {
   text-shadow: none;
 }
 .yzecoriolis.sheet.actor .sheet-body .gear-list .gear-control-add-widget:hover {
-  text-shadow: 0 0 5px #FF4500;
+  text-shadow: 0 0 5px #3f82a7;
   color: white;
   transform: scale(1.05);
 }
 .yzecoriolis.sheet.actor .sheet-body .gear-list .gear-restricted {
-  color: #7182BE;
+  color: #7182be;
   flex-basis: 20px;
 }
 .yzecoriolis.sheet.actor .sheet-body .gear-list .gear {
   align-items: center;
-  font-family: "Cairo";
+  font-family: "Chivo";
   color: white;
-  margin-bottom: 2px;
+  border-bottom: 1px solid #4e606c;
+}
+.yzecoriolis.sheet.actor .sheet-body .gear-list .gear .no-rows {
+  text-align: center;
+  padding: 0.3em;
 }
 .yzecoriolis.sheet.actor .sheet-body .gear-list .gear-name {
-  font-family: "Cairo-SemiBold";
+  font-family: "Saira";
   color: white;
-  color: #FFA903;
   font-size: 15px;
   cursor: pointer;
+  font-family: "Chivo";
+  font-weight: bold;
+  text-shadow: 0 0 4px black;
   flex: 2.5 0 0;
   align-items: center;
 }
@@ -1322,13 +1056,12 @@
   transform: translateX(5px);
 }
 .yzecoriolis.sheet.actor .sheet-body .gear-list .gear-row-data {
-  font-family: "Cairo";
+  font-family: "Chivo";
   color: white;
   font-size: 14px;
   text-align: center;
 }
 .yzecoriolis.sheet.actor .sheet-body .gear-list .gear-bg {
-  background-color: rgba(19, 27, 53, 0.45);
   border-radius: 3px;
   padding-left: 5px;
   padding-right: 5px;
@@ -1337,36 +1070,9 @@
   padding-top: 5px;
   padding-bottom: 5px;
 }
-@keyframes flicker {
-  0% {
-    background-color: rgba(59, 84, 166, 0.45);
-  }
-  100% {
-    background-color: rgba(19, 27, 53, 0.45);
-  }
-}
-.yzecoriolis.sheet.actor .sheet-body .gear-list .gear-bg:hover {
-  animation: flicker 1.2s;
-  animation-fill-mode: forwards;
-}
-.yzecoriolis.sheet.actor .sheet-body .gear-list .gear-bg.equipped {
-  background-color: rgba(19, 27, 53, 0.75);
-}
-@keyframes flicker {
-  0% {
-    background-color: rgba(59, 84, 166, 0.75);
-  }
-  100% {
-    background-color: rgba(19, 27, 53, 0.75);
-  }
-}
-.yzecoriolis.sheet.actor .sheet-body .gear-list .gear-bg.equipped:hover {
-  animation: flicker 1.2s;
-  animation-fill-mode: forwards;
-}
 .yzecoriolis.sheet.actor .sheet-body .gear-list .gear-quantity-input {
-  font-family: "Cairo";
-  color: #FDFF9D;
+  font-family: "Saira";
+  color: white;
   font-size: 14px;
   box-shadow: none;
   border: none;
@@ -1375,12 +1081,12 @@
   width: 50px;
 }
 .yzecoriolis.sheet.actor .sheet-body .gear-list .item-toggle.equipped {
-  color: #FFA903;
+  color: #ffa903;
   transform: scale(1.05);
 }
 .yzecoriolis.sheet.actor .sheet-body .gear-list .gear-img-container {
-  height: 42px;
-  flex: 0 0 42px;
+  height: 30px;
+  flex: 0 0 30px;
   border-radius: 22px;
   background-repeat: no-repeat;
   background-position: center;
@@ -1394,19 +1100,18 @@
   transition: background-image 275ms ease, transform 275ms ease;
 }
 .yzecoriolis.sheet.actor .sheet-body .gear-list .gear-img-container.rollable:hover {
-  background-image: url('icons/rolling-dices-orange.svg') !important;
+  background-image: url("icons/rolling-dices-orange.svg") !important;
   transform: scale(1.05);
 }
 .yzecoriolis.sheet.actor .sheet-body .gear-list .gear-img {
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   border: none;
 }
 .yzecoriolis.sheet.actor .sheet-body .encumbrance-bar {
   background-color: rgba(19, 27, 53, 0.85);
   border-radius: 5px;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin: 1.5em 1em;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
@@ -1416,19 +1121,19 @@
   grid-row-end: 2;
   grid-column-start: 1;
   grid-column-end: 2;
-  background-color: #3F82A7;
+  background-color: #288abe;
   border-radius: 5px 0px 0px 5px;
 }
 .yzecoriolis.sheet.actor .sheet-body .encumbrance-bar .encumbrance-fill.encumbered {
   border-radius: 5px;
-  background-color: #FF4500;
+  background-color: #ff4500;
 }
 .yzecoriolis.sheet.actor .sheet-body .encumbrance-bar .encumbrance-data {
   grid-row-start: 1;
   grid-row-end: 2;
   grid-column-start: 1;
   grid-column-end: 2;
-  font-family: "Cairo";
+  font-family: "Chivo";
   color: white;
   padding-left: 10px;
 }
@@ -1442,19 +1147,25 @@
   margin-right: 15px;
 }
 .yzecoriolis.sheet.actor .sheet-body .bio-stats .bio-category-header {
-  font-family: "Cairo";
+  font-family: "Chivo";
   color: white;
-  border-radius: 3px;
-  background-color: rgba(113, 130, 190, 0.44);
+  background-color: #b0cde4;
   height: 24px;
-  margin-bottom: 5px;
   align-content: center;
   align-items: center;
   margin-top: 20px;
+  font-weight: bold;
+  color: black;
   text-align: center;
 }
 .yzecoriolis.sheet.actor .sheet-body .bio-stats .bio-category-header:first-of-type {
   margin-top: 0px;
+}
+.yzecoriolis.sheet.actor .sheet-body .bio-stats .bio-category-header:first-of-type {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1em;
 }
 .yzecoriolis.sheet.actor .sheet-body .bio-stats .bio-category-name {
   font-size: 14px;
@@ -1466,13 +1177,17 @@
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
 }
 .yzecoriolis.sheet.actor .sheet-body .bio-stats .bio-input {
-  font-family: "Cairo";
-  color: #FDFF9D;
-  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+  font-family: "Saira";
+  color: white;
   font-size: 20px;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+  font-size: 14px;
   height: 25px;
   text-align: center;
   margin-bottom: 8px;
+  font-family: "Chivo";
+  outline: none;
+  box-shadow: none;
 }
 .yzecoriolis.sheet.actor .sheet-body .bio-stats .bio-checkbox {
   -webkit-appearance: none;
@@ -1486,7 +1201,7 @@
   border-radius: 3px;
 }
 .yzecoriolis.sheet.actor .sheet-body .bio-stats .bio-checkbox:hover {
-  background-color: #7B7C4C;
+  background-color: #7b7c4c;
 }
 .yzecoriolis.sheet.actor .sheet-body .bio-stats .bio-checkbox:checked {
   background: url("icons/checkbox-checked.svg") center no-repeat;
@@ -1494,9 +1209,8 @@
 }
 .yzecoriolis.sheet.actor .sheet-body .bio-stats .bio-block {
   transition: 275ms filter ease;
-  background-color: rgba(19, 27, 53, 0.45);
   border-radius: 3px;
-  border: 1px solid #7182BE;
+  border: 1px solid #4e606c;
   display: flex;
   flex-direction: column;
   flex: 0 0 49%;
@@ -1507,10 +1221,10 @@
   filter: brightness(1.5);
 }
 .yzecoriolis.sheet.actor .sheet-body .bio-stats .bio-block .bio-block-title {
-  font-family: "Cairo";
+  font-family: "Chivo";
   color: white;
-  letter-spacing: 0.2em;
-  color: #7182BE;
+  font-weight: bold;
+  color: #b0cde4;
   text-transform: uppercase;
   margin-top: 8px;
 }
@@ -1518,14 +1232,15 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  font-family: "Cairo";
-  color: #FDFF9D;
+  font-family: "Saira";
+  color: white;
   font-size: 20px;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
   line-height: 25px;
   width: 280px;
   height: 25px;
   padding: 0px 35px 0px 10px;
+  margin-top: 0.6em;
   border: none;
   background: url("icons/drop-down-arrow.svg") 6.4% no-repeat rgba(113, 130, 190, 0.44);
   background-position: right 0.7em top 50%;
@@ -1561,7 +1276,7 @@
   padding-left: 35px;
 }
 .yzecoriolis.sheet.actor .sheet-body .bio-stats .bio-control-widget {
-  color: #7182BE;
+  color: #7182be;
   flex-basis: 20px;
   transition: color 275ms ease, transform 275ms ease, text-shadow 275ms ease;
 }
@@ -1569,7 +1284,7 @@
   text-shadow: none;
 }
 .yzecoriolis.sheet.actor .sheet-body .bio-stats .bio-control-widget:hover {
-  text-shadow: 0 0 5px #FF4500;
+  text-shadow: 0 0 5px #3f82a7;
   color: white;
   transform: scale(1.05);
 }
@@ -1582,21 +1297,309 @@
   max-height: 590px;
   height: 590px;
   margin: 10px;
-  font-family: "Cairo";
-  color: #FDFF9D;
+  font-family: "Saira";
+  color: white;
 }
 .yzecoriolis.sheet.actor .charnotes .editor-edit {
   display: block;
   width: 40px;
   text-align: center;
   background-color: rgba(19, 27, 53, 0.45);
-  color: #7182BE;
-  border: 1px solid #7182BE;
+  color: #7182be;
+  border: 1px solid #7182be;
   transition: background-color 275ms ease;
 }
 .yzecoriolis.sheet.actor .charnotes .editor-edit:hover {
   text-shadow: none;
   background-color: rgba(46, 65, 128, 0.45);
+}
+.yzecoriolis.sheet.actor .stats .attributes h2,
+.yzecoriolis.sheet.actor .stats .skills h2 {
+  color: white;
+  background-color: black;
+  border: none;
+  margin: 0;
+  padding: 0.5em;
+  font-family: "Saira", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1.1em;
+  position: relative;
+}
+.yzecoriolis.sheet.actor .stats .attributes .toggle,
+.yzecoriolis.sheet.actor .stats .skills .toggle {
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  position: absolute;
+  right: 0.6em;
+  top: 0.6em;
+  cursor: pointer;
+}
+.yzecoriolis.sheet.actor .stats .attributes .toggle:hover,
+.yzecoriolis.sheet.actor .stats .skills .toggle:hover {
+  border-color: white;
+}
+.yzecoriolis.sheet.actor .stats .attributes .toggle:before,
+.yzecoriolis.sheet.actor .stats .skills .toggle:before {
+  content: "-";
+  font-size: 1.5em;
+  position: absolute;
+  top: -2px;
+  right: -1px;
+  display: block;
+  line-height: 20px;
+  width: 20px;
+  text-align: center;
+  font-weight: 400;
+}
+.yzecoriolis.sheet.actor .stats .attributes.collapsed .collapsable,
+.yzecoriolis.sheet.actor .stats .skills.collapsed .collapsable {
+  display: none;
+}
+.yzecoriolis.sheet.actor .stats .attributes.collapsed .toggle:before,
+.yzecoriolis.sheet.actor .stats .skills.collapsed .toggle:before {
+  content: "+";
+}
+.yzecoriolis.sheet.actor .stats .attributes .stat-list,
+.yzecoriolis.sheet.actor .stats .skills .stat-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: url("images/gradient.png");
+  background-size: cover;
+}
+.yzecoriolis.sheet.actor .stats .attributes .stat-list li,
+.yzecoriolis.sheet.actor .stats .skills .stat-list li {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  padding: 0 1em;
+  color: black;
+  display: flex;
+  align-items: center;
+}
+.yzecoriolis.sheet.actor .stats .attributes .stat-list li:first-child,
+.yzecoriolis.sheet.actor .stats .skills .stat-list li:first-child {
+  border-top: none;
+}
+.yzecoriolis.sheet.actor .stats .attributes .stat-list li .stat-name,
+.yzecoriolis.sheet.actor .stats .skills .stat-list li .stat-name {
+  width: 85%;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.yzecoriolis.sheet.actor .stats .attributes .stat-list li .stat-value,
+.yzecoriolis.sheet.actor .stats .skills .stat-list li .stat-value {
+  width: 15%;
+}
+.yzecoriolis.sheet.actor .stats .attributes .stat-list li .stat-value input,
+.yzecoriolis.sheet.actor .stats .skills .stat-list li .stat-value input {
+  border: 1px solid #4e606c;
+  background: transparent;
+  display: block;
+  padding: 0.5em;
+  font-size: 14px;
+  color: black;
+  font-family: Saira, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  margin: 0.5em;
+}
+.yzecoriolis.sheet.actor .stats .skills {
+  margin-top: 1em;
+}
+.yzecoriolis.sheet.actor .bar-bg {
+  padding: 0px 5px 0px 5px;
+  border: 1px solid #a4a4a4;
+  border-radius: 5px;
+  background-color: rgba(113, 130, 190, 0.35);
+  height: 27px;
+}
+.yzecoriolis.sheet.actor .bar-value {
+  width: 20px;
+  text-align: center;
+  font-size: 16px;
+  color: white;
+}
+.yzecoriolis.sheet.actor .radiation-bar {
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 5px 0px 5px;
+  border: 1px solid #a4a4a4;
+  border-radius: 5px;
+  background-color: rgba(113, 130, 190, 0.35);
+  height: 27px;
+}
+.yzecoriolis.sheet.actor .radiation-bar .bar-segment {
+  border-radius: 2px;
+  box-sizing: border-box;
+  flex: 1 1 10px;
+  height: 17px;
+  margin: 3.5px 1px;
+  background-color: #000000;
+  transition: background-color 275ms ease, border 275ms ease;
+}
+.yzecoriolis.sheet.actor .radiation-bar .hover-to-decrease {
+  background-color: #44482c !important;
+}
+.yzecoriolis.sheet.actor .radiation-bar .hover-to-increase {
+  border: 1px solid #cbdd58;
+}
+.yzecoriolis.sheet.actor .radiation-bar .bar-segment.on {
+  background-color: #cbdd58;
+}
+.yzecoriolis.sheet.actor .radiation-bar .bar-segment.on:hover {
+  transform: scale(1.05);
+}
+.yzecoriolis.sheet.actor .radiation-bar .bar-segment.off {
+  background-color: #000000;
+}
+.yzecoriolis.sheet.actor .radiation-bar .bar-segment.off:hover {
+  transform: scale(1.05);
+}
+.yzecoriolis.sheet.actor .xp-bar {
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 5px 0px 5px;
+  border: 1px solid #a4a4a4;
+  border-radius: 5px;
+  background-color: rgba(113, 130, 190, 0.35);
+  height: 27px;
+}
+.yzecoriolis.sheet.actor .xp-bar .bar-segment {
+  border-radius: 2px;
+  box-sizing: border-box;
+  flex: 1 1 10px;
+  height: 17px;
+  margin: 3.5px 1px;
+  background-color: #000000;
+  transition: background-color 275ms ease, border 275ms ease;
+}
+.yzecoriolis.sheet.actor .xp-bar .hover-to-decrease {
+  background-color: #c7b4ee !important;
+}
+.yzecoriolis.sheet.actor .xp-bar .hover-to-increase {
+  border: 1px solid #9b78e7;
+}
+.yzecoriolis.sheet.actor .xp-bar .bar-segment.on {
+  background-color: #9b78e7;
+}
+.yzecoriolis.sheet.actor .xp-bar .bar-segment.on:hover {
+  transform: scale(1.05);
+}
+.yzecoriolis.sheet.actor .xp-bar .bar-segment.off {
+  background-color: #000000;
+}
+.yzecoriolis.sheet.actor .xp-bar .bar-segment.off:hover {
+  transform: scale(1.05);
+}
+.yzecoriolis.sheet.actor .rep-bar {
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 5px 0px 5px;
+  border: 1px solid #a4a4a4;
+  border-radius: 5px;
+  background-color: rgba(113, 130, 190, 0.35);
+  height: 27px;
+}
+.yzecoriolis.sheet.actor .rep-bar .bar-segment {
+  border-radius: 2px;
+  box-sizing: border-box;
+  flex: 1 1 10px;
+  height: 17px;
+  margin: 3.5px 1px;
+  background-color: #000000;
+  transition: background-color 275ms ease, border 275ms ease;
+}
+.yzecoriolis.sheet.actor .rep-bar .hover-to-decrease {
+  background-color: #b67e17 !important;
+}
+.yzecoriolis.sheet.actor .rep-bar .hover-to-increase {
+  border: 1px solid #f09e40;
+}
+.yzecoriolis.sheet.actor .rep-bar .bar-segment.on {
+  background-color: #f09e40;
+}
+.yzecoriolis.sheet.actor .rep-bar .bar-segment.on:hover {
+  transform: scale(1.05);
+}
+.yzecoriolis.sheet.actor .rep-bar .bar-segment.off {
+  background-color: #000000;
+}
+.yzecoriolis.sheet.actor .rep-bar .bar-segment.off:hover {
+  transform: scale(1.05);
+}
+.yzecoriolis.sheet.actor .hp-bar {
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 5px 0px 5px;
+  border: 1px solid #a4a4a4;
+  border-radius: 5px;
+  background-color: rgba(113, 130, 190, 0.35);
+  height: 27px;
+}
+.yzecoriolis.sheet.actor .hp-bar .bar-segment {
+  border-radius: 2px;
+  box-sizing: border-box;
+  flex: 1 1 10px;
+  height: 17px;
+  margin: 3.5px 1px;
+  background-color: #000000;
+  transition: background-color 275ms ease, border 275ms ease;
+}
+.yzecoriolis.sheet.actor .hp-bar .hover-to-decrease {
+  background-color: #d33232 !important;
+}
+.yzecoriolis.sheet.actor .hp-bar .hover-to-increase {
+  border: 1px solid #7cd366;
+}
+.yzecoriolis.sheet.actor .hp-bar .bar-segment.on {
+  background-color: #7cd366;
+}
+.yzecoriolis.sheet.actor .hp-bar .bar-segment.on:hover {
+  transform: scale(1.05);
+}
+.yzecoriolis.sheet.actor .hp-bar .bar-segment.off {
+  background-color: #000000;
+}
+.yzecoriolis.sheet.actor .hp-bar .bar-segment.off:hover {
+  transform: scale(1.05);
+}
+.yzecoriolis.sheet.actor .mind-bar {
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 5px 0px 5px;
+  border: 1px solid #a4a4a4;
+  border-radius: 5px;
+  background-color: rgba(113, 130, 190, 0.35);
+  height: 27px;
+}
+.yzecoriolis.sheet.actor .mind-bar .bar-segment {
+  border-radius: 2px;
+  box-sizing: border-box;
+  flex: 1 1 10px;
+  height: 17px;
+  margin: 3.5px 1px;
+  background-color: #000000;
+  transition: background-color 275ms ease, border 275ms ease;
+}
+.yzecoriolis.sheet.actor .mind-bar .hover-to-decrease {
+  background-color: #081f43 !important;
+}
+.yzecoriolis.sheet.actor .mind-bar .hover-to-increase {
+  border: 1px solid #3f82a7;
+}
+.yzecoriolis.sheet.actor .mind-bar .bar-segment.on {
+  background-color: #3f82a7;
+}
+.yzecoriolis.sheet.actor .mind-bar .bar-segment.on:hover {
+  transform: scale(1.05);
+}
+.yzecoriolis.sheet.actor .mind-bar .bar-segment.off {
+  background-color: #000000;
+}
+.yzecoriolis.sheet.actor .mind-bar .bar-segment.off:hover {
+  transform: scale(1.05);
 }
 .yzecoriolis.sheet.item {
   /* ----------------------------------------- */
@@ -1719,7 +1722,7 @@
   text-shadow: none;
 }
 .yzecoriolis.sheet.item .item-form {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Chivo", sans-serif;
 }
 .yzecoriolis.sheet.item .items-list {
   list-style: none;
@@ -1750,6 +1753,35 @@
   flex: 0 0 86px;
   text-align: right;
 }
+#chat-log .message {
+  background-image: url("images/gradient.png");
+  background-size: cover;
+  border-color: #114868;
+  color: black;
+  font-family: "Chivo";
+}
+#chat-log .message .message-header {
+  color: black;
+}
+#chat-form textarea {
+  background: rgba(255, 255, 255, 0.1);
+}
+.yzecoriolis.roll-modifier-dialog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.yzecoriolis.roll-modifier-dialog input {
+  width: 15%;
+  margin-left: 1em;
+  text-align: center;
+}
+.yzecoriolis.dice-roll .dice-title {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.9em;
+  text-align: center;
+}
 .yzecoriolis.dice-roll .coriolis-results .dice-rolls {
   list-style: none;
   padding: 0;
@@ -1759,14 +1791,25 @@
   line-height: 24px;
   float: left;
 }
+.yzecoriolis.dice-roll .dice-result h4 {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0.5em;
+  text-transform: uppercase;
+  font-family: "Saira";
+  font-size: 1.8em;
+  border-radius: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+}
 .yzecoriolis.dice-roll .limitedSuccess {
-  color: green;
+  color: #1d77ca;
 }
 .yzecoriolis.dice-roll .criticalSuccess {
-  color: greenyellow;
+  color: #75bb0b;
 }
 .yzecoriolis.dice-roll .criticalfailure {
-  color: red;
+  color: #ad3a3a;
 }
 .yzecoriolis.dice-roll .dice-face {
   width: 50px;
@@ -1801,7 +1844,7 @@
   color: #7a7971;
 }
 .yzecoriolis.dice-push a {
-  color: #44191A;
+  color: #44191a;
 }
 .yzecoriolis.darknesspoint-tool {
   background-image: url("icons/darkness-point-add.svg");

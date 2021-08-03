@@ -1,89 +1,31 @@
 import { addDarknessPoints } from "./darkness-points.js";
 
 export function coriolisModifierDialog(modifierCallback) {
+    let value = 0;
     let d = new Dialog({
         title: game.i18n.localize("YZECORIOLIS.ModifierForRoll"),
-        content: `<p>${game.i18n.localize("YZECORIOLIS.ModifierForRollQuestion")}</p>`,
+        content: `<div class="yzecoriolis roll-modifier-dialog"><p>${game.i18n.localize("YZECORIOLIS.ModifierForRollQuestion")}</p> <input type="number" id="roll-modifier" min="-9" max="9" value="0" /></div>`,
         buttons: {
-            nineMinus: {
-                label: "-9",
-                callback: () => modifierCallback(-9)
+            ok: {
+                label: 'Confirmar',
+                callback: () => {
+                    modifierCallback(value)
+                }
             },
-            eightMinus: {
-                label: "-8",
-                callback: () => modifierCallback(-8)
+            cancel: {
+                label: 'Cancelar',
+                callback: () => {},
             },
-            sevenMinus: {
-                label: "-7",
-                callback: () => modifierCallback(-7)
-            },
-            sixMinus: {
-                label: "-6",
-                callback: () => modifierCallback(-6)
-            },
-            fiveMinus: {
-                label: "-5",
-                callback: () => modifierCallback(-5)
-            },
-            fourMinus: {
-                label: "-4",
-                callback: () => modifierCallback(-4)
-            },
-
-            threeMinus: {
-                label: "-3",
-                callback: () => modifierCallback(-3)
-            },
-            twoMinus: {
-                label: "-2",
-                callback: () => modifierCallback(-2)
-            },
-            oneMinus: {
-                label: "-1",
-                callback: () => modifierCallback(-1)
-            },
-            zero: {
-                label: "0",
-                callback: () => modifierCallback(0)
-            },
-            onePlus: {
-                label: "+1",
-                callback: () => modifierCallback(1)
-            },
-            twoPlus: {
-                label: "+2",
-                callback: () => modifierCallback(2)
-            },
-            threePlus: {
-                label: "+3",
-                callback: () => modifierCallback(3)
-            },
-            fourPlus: {
-                label: "+4",
-                callback: () => modifierCallback(4)
-            },
-            fivePlus: {
-                label: "+5",
-                callback: () => modifierCallback(5)
-            },
-            sixPlus: {
-                label: "+6",
-                callback: () => modifierCallback(6)
-            },
-            sevenPlus: {
-                label: "+7",
-                callback: () => modifierCallback(7)
-            },
-            eightPlus: {
-                label: "+8",
-                callback: () => modifierCallback(8)
-            },
-            ninePlus: {
-                label: "+9",
-                callback: () => modifierCallback(9)
-            }
         },
-        default: "zero",
+        default: "ok",
+        render: html => {
+            html.find('#roll-modifier').on('change', function (e) {
+                let n = Number(this.value)
+                if (!isNaN(n) && n < 10 && n > -10) {
+                    value = n;
+                }
+            });
+        },
         close: () => { }
     });
     d.render(true);

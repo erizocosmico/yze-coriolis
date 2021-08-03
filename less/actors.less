@@ -1,1221 +1,1193 @@
 @import "./variables.less";
 
 .yzecoriolis.sheet.actor {
-
-
-    /*
+  /*
     mixins
     */
-    .player-text {
-        font-family: "Cairo";
-        color: @colorPlayerText;
+  .player-text {
+    font-family: "Saira";
+    color: @colorPlayerText;
+  }
+
+  .player-text-bold {
+    font-family: "Saira";
+    color: @colorPlayerText;
+  }
+
+  .data-text {
+    font-family: "Chivo";
+    color: @colorWhite;
+  }
+
+  .data-text-bold {
+    font-family: "Saira";
+    font-weight: 800;
+    color: @colorWhite;
+  }
+
+  .data-text-semibold {
+    font-family: "Saira";
+    color: @colorWhite;
+  }
+
+  .line-item-entry {
+    background: @colorStatItemEntryBG;
+    border-radius: 3px;
+    padding: 2px;
+    margin-bottom: 2px;
+  }
+
+  .darkBlue {
+    &.faded {
+      color: @colorDarkBlue;
+    }
+  }
+
+  .flicker-anim(@fromCol, @toCol) {
+    @keyframes flicker {
+      0% {
+        background-color: @fromCol;
+      }
+
+      100% {
+        background-color: @toCol;
+      }
+    }
+  }
+
+  .hover-header-buttons {
+    transition: color 275ms ease, transform 275ms ease, text-shadow 275ms ease;
+
+    a {
+      &:hover {
+        text-shadow: none;
+      }
     }
 
-    .player-text-bold {
-        font-family: "Cairo-Bold";
-        color: @colorPlayerText;
+    &:hover {
+      text-shadow: 0 0 5px @colorPaleBlue;
+      color: @colorWhite;
+      transform: scale(1.05);
+    }
+  }
+
+  /*-------------------------------------*/
+  /* List Mixins */
+  /*-------------------------------------*/
+  .vertical-list {
+    list-style: none;
+    overflow-y: auto;
+    padding: 0 5px 0 0;
+  }
+
+  .category-header {
+    .data-text();
+    background-color: @colorTableHeader;
+    height: 24px;
+    align-content: center;
+    align-items: center;
+    margin-top: 20px;
+    font-weight: bold;
+    color: black;
+
+    &:first-of-type {
+      margin-top: 0px;
+    }
+  }
+
+  .category-column-name {
+    font-size: 14px;
+    margin: 0px 0px 0px 5px;
+    text-transform: uppercase;
+  }
+
+  .item-list-controls {
+    text-transform: uppercase;
+    flex: 0 0 100px;
+    margin-top: 2px;
+    text-align: right;
+    margin-right: 7px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .item-status-icon {
+    color: @colorDarkBlue;
+    flex-basis: 20px;
+  }
+
+  .item-control-widget {
+    .item-status-icon();
+    .hover-header-buttons();
+  }
+
+  .item-control-add-widget {
+    .item-control-widget();
+    color: black;
+    flex-basis: 100px;
+  }
+
+  .item-entry {
+    align-items: center;
+    .data-text();
+    color: @colorWhite;
+    border-bottom: 1px solid @colorTableSeparator;
+
+    .no-rows {
+      text-align: center;
+      padding: 0.3em;
+    }
+  }
+
+  .item-entry-name-rollover {
+    transition: transform 275ms ease;
+
+    &:hover {
+      transform: translateX(5px);
+    }
+  }
+
+  .item-entry-name {
+    .data-text-semibold();
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    font-family: "Chivo";
+    font-weight: bold;
+    text-shadow: 0 0 4px black;
+  }
+
+  .item-bg {
+    border-radius: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    flex: 0 0 100%;
+  }
+
+  .item-summary {
+    flex: 0 0 100%;
+    margin-top: 2px;
+    padding-bottom: 2px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .item-summary-wrapper {
+    border-radius: 3px;
+    flex: 0 0 570px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 25px;
+  }
+
+  .item-properties {
+    flex: 1;
+    margin-bottom: 5px;
+
+    .tag {
+      .data-text();
+      font-size: 12px;
+      border-radius: 3px;
+      border: 1px solid @colorBlue;
+      padding: 0 5px 0 5px;
+      margin-right: 10px;
+    }
+  }
+
+  input[type="text"] {
+    font-family: "Saira", sans-serif;
+    box-shadow: none;
+    border: none;
+    color: white;
+
+    &::placeholder {
+      /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: whitesmoke;
+    }
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: @colorTableSeparator;
+    border-color: @colorTableHeader;
+  }
+
+  input[type="checkbox"] {
+    flex: 0 0 22px;
+    width: 20px;
+    height: 20px;
+    margin: 3px 5px;
+  }
+
+  // Don't show spinners on number inputs. Not ideal. Would like to indicate
+  // that scrolling is possible on some fields in a future update.
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    appearance: textfield;
+    margin: 0;
+  }
+
+  /*
+    Background & Container
+    */
+  .window-content {
+    background: url("images/bg1.png");
+    background-size: cover;
+    padding: 0;
+    margin: 0;
+  }
+
+  .sheet-container {
+    display: grid;
+    grid-template-columns: 1fr 2.6fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 20px;
+    background: url("images/border-up.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding: 1.5em 1em;
+  }
+
+  /*
+    Content Box
+    */
+  .char-content-wrapper {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 4;
+  }
+
+  /*
+    Header
+    */
+  .sheet-header {
+    flex-direction: column;
+    align-items: flex-start;
+
+    .char-name {
+      width: 100%;
+      font-family: "Saira";
+      font-weight: bold;
+      font-size: 2.5em;
+      text-align: center;
+
+      input[type="text"] {
+        height: 1.6em;
+        padding-top: 0.5em;
+      }
     }
 
-    .data-text {
-        font-family: "Cairo";
-        color: @colorWhite;
-    }
+    .char-info {
+      width: 100%;
+      padding: 1.5em 0.5em 2em 0.5em;
 
-    .data-text-bold {
-        font-family: "Cairo-Bold";
-        color: @colorWhite;
-    }
+      .char-info-row {
+        display: flex;
 
-    .data-text-semibold {
-        font-family: "Cairo-SemiBold";
-        color: @colorWhite;
-    }
-
-    .line-item-entry {
-        background: @colorStatItemEntryBG;
-        border-radius: 3px;
-        padding: 2px;
-        margin-bottom: 2px;
-    }
-
-    .darkBlue {
-        &.faded {
-            color: @colorDarkBlue;
+        & + .char-info-row {
+          margin-top: 1em;
         }
-    }
 
-    .flicker-anim(@fromCol, @toCol) {
-        @keyframes flicker {
-            0% {
-                background-color: @fromCol
-            }
+        .char-info-col {
+          width: 50%;
+          display: flex;
+          align-items: center;
 
-            100% {
-                background-color: @toCol
+          & + .char-info-col {
+            margin-left: 1em;
+          }
+
+          .bar {
+            width: 55%;
+          }
+
+          .char-info-label {
+            color: white;
+            font-family: Saira;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding-right: 1em;
+            width: 45%;
+            text-shadow: 0 0 4px black;
+          }
+
+          .char-info-value {
+            width: 55%;
+
+            input {
+              border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+              border-radius: 0;
+
+              &:hover,
+              &:focus {
+                border-bottom-color: white;
+              }
             }
+          }
         }
+      }
     }
 
-    .hover-header-buttons {
-        transition: color 275ms ease, transform 275ms ease, text-shadow 275ms ease;
+    /*-------------------------------------*/
+    /* Critical Injuries*/
+    /*-------------------------------------*/
+    .critical-injuries {
+      width: 100%;
+      margin-bottom: 1em;
+    }
 
-        a {
-            &:hover {
-                text-shadow: none;
-            }
+    .critical-injury-list {
+      .vertical-list();
+
+      .critical-injury-category-header {
+        .category-header();
+      }
+
+      .critical-injury-category-name {
+        .category-column-name();
+      }
+
+      .critical-injury-controls {
+        .item-list-controls();
+      }
+
+      .critical-injury-control-widget {
+        .item-control-widget();
+      }
+
+      .critical-injury-control-add-widget {
+        .item-control-add-widget();
+      }
+
+      .critical-injury {
+        .item-entry();
+      }
+
+      .critical-injury-bg {
+        .item-bg();
+      }
+
+      .critical-injury-name,
+      .critical-injury-description {
+        .item-entry-name();
+        align-items: center;
+      }
+
+      .critical-injury-description {
+        font-weight: 400;
+      }
+
+      .expanded {
+        height: auto;
+      }
+
+      .critical-injury-controls {
+        align-items: center;
+      }
+    }
+  }
+
+  .sheet-body {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+
+    .navigation {
+      display: flex;
+      flex-direction: row;
+      background-color: black;
+      align-items: center;
+      border: 0;
+      margin-bottom: 2em;
+
+      .item-bgm {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .item.active {
+        text-decoration: none;
+        color: @colorWhite;
+        box-shadow: 0 2px 0 white;
+      }
+
+      .nav-link {
+        .data-text-bold();
+        text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.25);
+        transition: text-shadow 275ms ease;
+        height: 100%;
+
+        &.selected {
+          color: @colorWhite;
+          text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.35);
         }
 
         &:hover {
-            text-shadow: 0 0 5px @colorOrangeShadow;
-            color: @colorWhite;
-            transform: scale(1.05);
+          text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.35);
         }
+
+        text-transform: uppercase;
+        font-size: 18px;
+        text-align: center;
+        flex: 1;
+      }
     }
 
-    input[type="text"] {
+    .panel {
+      display: flex;
+      flex-direction: column;
+
+      // since I rolled my own nav from scratch and didn't utilize flexrow/flexcol
+      // I needed to recognize when a panel should be hidden.
+      &.tab[data-tab] {
+        display: none;
+      }
+
+      &.tab[data-tab].active {
+        display: flex;
+      }
+    }
+
+    .bg-attr(@image) {
+      background-repeat: no-repeat;
+      background-image: url(@image);
+      background-position: center center;
+      background-clip: padding-box;
+    }
+
+    /*-------------------------------------*/
+    /* Attributes List*/
+    /*-------------------------------------*/
+    .attribute-list {
+      list-style: none;
+      padding: 0px;
+      justify-content: space-around;
+      margin-top: 10px;
+      margin-bottom: 0px;
+
+      display: flex;
+      flex-direction: row;
+
+      .attr-item {
+        align-items: center;
+        .animated-hover();
+      }
+
+      .attr-block {
+        border: 3px solid @colorBlue;
+        box-sizing: border-box;
+        border-radius: 3px;
+        background-color: rgba(19, 27, 53, 0.25);
+        flex-basis: 70px; // height since this is in a column
+        height: 70px; // not sure why i have to enable both...!?
+        width: 116px;
+      }
+
+      .bg-wits {
+        .bg-attr("icons/icon-wits-bg.svg");
+      }
+
+      .bg-strength {
+        .bg-attr("icons/icon-strength-bg.svg");
+      }
+
+      .bg-empathy {
+        .bg-attr("icons/icon-empathy-bg.svg");
+      }
+
+      .bg-agility {
+        .bg-attr("icons/icon-agility-bg.svg");
+      }
+
+      .attr-num-display {
         .player-text();
-        font-family: "Play";
+        font-size: 48px;
+        font-weight: bold;
+        line-height: 60px;
+
+        .attr-input {
+          font-weight: bold;
+          font-size: 48px;
+          height: 50px;
+          text-align: center;
+          text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+        }
+      }
+
+      .attr-name {
+        .data-text();
+        font-size: 14px;
+        letter-spacing: @letterSpacingSmaller;
+        text-transform: uppercase;
+        color: @colorBlue;
+      }
+
+      .attr-rollable {
+        img {
+          border: none;
+          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+          width: 44px;
+          height: 44px;
+        }
+      }
+    }
+
+    /*-------------------------------------*/
+    /* Skills List*/
+    /*-------------------------------------*/
+    .skills-list-group {
+      ol {
+        list-style: none;
+        padding: 0px;
+      }
+
+      .single-skill-list {
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+
+      justify-content: space-around;
+
+      .skill-header {
+        .data-text();
+        font-size: 14px;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      .skill {
+        .animated-hover();
+        .line-item-entry();
+        align-items: center;
+        height: 30px;
+
+        .rollable {
+          &:hover {
+            text-shadow: 0 0 5px @colorOrangeShadow;
+
+            // we trigger this here so we have a bigger hit area
+            .skill-image {
+              background-image: url("icons/rolling-dices.svg");
+              background-size: 30px;
+            }
+          }
+        }
+
+        h4 {
+          .data-text();
+          color: @colorBlue;
+          font-weight: bold;
+          font-size: 13px;
+          flex: 1;
+          margin: 0px;
+          line-height: 30px;
+        }
+
+        .skill-image {
+          transition: 275ms background-size ease;
+          background-position: center center;
+          background-repeat: no-repeat;
+          background-size: 0px;
+          height: 30px;
+          flex-basis: 30px;
+          margin-right: 5px;
+        }
+
+        .attr-tag-helper {
+          height: 30px;
+          flex-basis: 30px;
+          background-size: 25px;
+          flex-basis: 80px;
+        }
+
+        .bg-skill-wits {
+          .attr-tag-helper();
+          .bg-attr("icons/skill-tag-wits.svg");
+        }
+
+        .bg-skill-strength {
+          .attr-tag-helper();
+          .bg-attr("icons/skill-tag-strength.svg");
+          background-size: 20px;
+        }
+
+        .bg-skill-empathy {
+          .attr-tag-helper();
+          .bg-attr("icons/skill-tag-empathy.svg");
+        }
+
+        .bg-skill-agility {
+          .attr-tag-helper();
+          .bg-attr("icons/skill-tag-agility.svg");
+        }
+
+        .skill-value-display {
+          flex-basis: 45px;
+        }
+
+        .skill-input {
+          font-weight: bold;
+          font-size: 18px;
+          height: 25px;
+          text-align: center;
+        }
+      }
+    }
+
+    /*-------------------------------------*/
+    /* Talent List */
+    /*-------------------------------------*/
+
+    .talent-list {
+      .vertical-list();
+
+      .talent-category-header {
+        .category-header();
+      }
+
+      .talent-category-name {
+        .category-column-name();
+      }
+
+      .talent-controls {
+        .item-list-controls();
+      }
+
+      .talent-control-widget {
+        .item-control-widget();
+      }
+
+      .talent-control-add-widget {
+        .item-control-add-widget();
+      }
+
+      .talent {
+        .item-entry();
+        padding: 0.5em 0;
+      }
+
+      .talent-bg {
+        .item-bg();
+      }
+
+      .talent-name {
+        .item-entry-name();
+        .item-entry-name-rollover();
+      }
+
+      .expanded {
+        height: auto;
+      }
+
+      .talent-controls {
+        align-items: center;
+      }
+    }
+
+    /*-------------------------------------*/
+    /* Item List */
+    /*-------------------------------------*/
+    .gear-list {
+      padding: 0;
+      margin: 0;
+
+      & + .gear-list {
+        margin-top: 1em;
+      }
+
+      .gear-category-header {
+        .category-header();
+      }
+
+      .gear-category-name {
+        .category-column-name();
+
+        &.center {
+          text-align: center;
+        }
+
+        &.first {
+          flex: 2.5;
+        }
+      }
+
+      .gear-controls {
+        .item-list-controls();
+      }
+
+      .gear-control-widget {
+        .item-control-widget();
+      }
+
+      .gear-control-add-widget {
+        .item-control-add-widget();
+      }
+
+      .gear-restricted {
+        .item-status-icon();
+      }
+
+      .gear {
+        .item-entry();
+      }
+
+      .gear-name {
+        .item-entry-name();
+        flex: 2.5 0 0;
+        align-items: center;
+
+        .expandable-info {
+          .item-entry-name-rollover();
+        }
+      }
+
+      .gear-row-data {
+        .data-text();
+        font-size: 14px;
+        text-align: center;
+      }
+
+      .gear-bg {
+        .item-bg();
+        align-items: center;
+        padding-top: 5px;
+        padding-bottom: 5px;
+
+        &.equipped {
+        }
+      }
+
+      .gear-quantity-input {
+        .player-text();
+        font-size: 14px;
         box-shadow: none;
         border: none;
-        font-size: 50px;
+        background-color: @colorTransparent;
+        text-align: center;
+        width: 50px;
+      }
 
-        &::placeholder {
-            /* Chrome, Firefox, Opera, Safari 10.1+ */
-            color: @colorPlaceHolderPlayerText;
+      .item-toggle {
+        &.equipped {
+          color: @colorOrange;
+          transform: scale(1.05);
         }
-    }
+      }
 
-    input[type="checkbox"] {
-        flex: 0 0 22px;
-        width: 20px;
-        height: 20px;
-        margin: 3px 5px;
-    }
+      .gear-img-container {
+        height: 30px;
+        flex: 0 0 30px;
+        border-radius: 22px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 5px;
 
-    // Don't show spinners on number inputs. Not ideal. Would like to indicate
-    // that scrolling is possible on some fields in a future update.
-    input[type=number]::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        -moz-appearance: textfield;
-        appearance: textfield;
-        margin: 0;
-    }
+        &.rollable {
+          transition: background-image 275ms ease, transform 275ms ease;
 
-    /*
-    Background & Container
-    */
-    .window-content {
-        background: linear-gradient(90deg, #000000 30.35%, rgba(0, 0, 0, 0) 100%),
-            url("images/char-sheet-bg.jpg");
-    }
-
-    .sheet-container {
-        display: grid;
-        grid-template-columns: 1fr 2.2fr;
-        grid-template-rows: repeat(3, 1fr);
-        grid-column-gap: 10px;
-        grid-row-gap: 20px;
-    }
-
-    /*
-    Key Art
-    */
-    .key-art-container {
-        grid-column-start: 1;
-        grid-column-end: 2;
-
-        grid-row-start: 1;
-        grid-row-end: 4;
-        z-index: 1;
-
-        .vertical-img {
-            border: 1px solid #ffffff;
-            box-sizing: border-box;
-            border-radius: 10px;
+          &:hover {
+            background-image: url("icons/rolling-dices-orange.svg") !important;
+            transform: scale(1.05);
+          }
         }
+      }
 
-
+      .gear-img {
+        width: 30px;
+        height: 30px;
+        border: none;
+      }
     }
 
-    .gradient-overlay {
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.635714) 28.12%, @colorBlack 72.92%);
-        grid-column-start: 1;
-        grid-column-end: 2;
-        grid-row-start: 2;
-        grid-row-end: 4;
-        z-index: 2;
-    }
+    .encumbrance-bar {
+      background-color: @colorEncumbranceBG;
+      border-radius: 5px;
+      margin: 1.5em 1em;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
 
-    .always-visible-stats {
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.635714) 28.12%, @colorBlack 72.92%);
-
-        grid-column-start: 1;
-        grid-column-end: 2;
-        grid-row-start: 3;
-        grid-row-end: 4;
-        z-index: 3;
-
-
-        .perma-stats-list {
-            color: @colorGray;
-            list-style: none;
-            padding: 0px;
-            margin: 0px;
-
-            .entry {
-                .data-text();
-                color: @colorGray;
-                font-size: 15px;
-                margin-left: 13px;
-                margin-right: 13px;
-                margin-bottom: 5px;
-                align-items: center;
-
-                .stat-label {
-                    flex: 0 0 120px;
-                }
-
-                .capitalize {
-                    text-transform: capitalize;
-                }
-
-                .number {
-                    color: @colorPlayerText;
-                    grid-column-start: 1;
-                    grid-column-end: 2;
-                    grid-row-start: 1;
-                    grid-row-end: 2;
-                    text-align: center;
-
-                    .input-value {
-                        .data-text();
-                        font-size: 17px;
-                        color: @colorPlayerText;
-                        height: 18px;
-                    }
-                }
-
-                //bar helpers
-                .bar-bg {
-                    padding: 0px 5px 0px 5px;
-                    border: 1px solid @colorBarOutline;
-                    border-radius: 5px;
-                    background-color: @colorStatBG;
-                    height: 27px;
-                }
-
-                .bar-value {
-                    width: 20px;
-                    text-align: center;
-                    font-size: 16px;
-                }
-
-                .bar-styling-helper(@fillCol, @decreaseCol) {
-                    justify-content: space-between;
-                    align-items: center;
-                    .bar-bg();
-
-                    .bar-segment {
-                        border-radius: 2px;
-                        box-sizing: border-box;
-                        flex: 1 1 10px;
-                        height: 17px;
-                        margin: 3.5px 1px;
-                        background-color: @colorBlack;
-                        transition: background-color 275ms ease,
-                            border 275ms ease;
-                    }
-
-                    .hover-to-decrease {
-                        // need important flag to override the current fill when decreasing.
-                        background-color: @decreaseCol  !important;
-                    }
-
-                    .hover-to-increase {
-                        border: 1px solid @fillCol;
-                    }
-
-                    .bar-segment.on {
-                        background-color: @fillCol;
-
-                        &:hover {
-                            transform: scale(1.05);
-                        }
-                    }
-
-                    .bar-segment.off {
-                        background-color: @colorBlack;
-
-                        &:hover {
-                            transform: scale(1.05);
-                        }
-                    }
-                }
-
-
-                .radiation-bar {
-                    .bar-styling-helper(@colorRadiationFill, @colorRadiationDecreaseFill);
-                }
-
-                .xp-bar {
-                    .bar-styling-helper(@colorXPFill, @colorXPDecreaseFill);
-                }
-
-                .rep-bar {
-                    .bar-styling-helper(@colorRepFill, @colorRepDecreaseFill);
-                }
-
-                .hp-bar {
-                    .bar-styling-helper(@colorGreen, @colorBlood);
-                }
-
-                .mind-bar {
-                    .bar-styling-helper(@colorPaleBlue, @colorDarkerBlue);
-                }
-            }
-        }
-    }
-
-    /*
-    Content Box
-    */
-    .char-content-wrapper {
-        grid-column-start: 2;
-        grid-column-end: 3;
-        grid-row-start: 1;
-        grid-row-end: 4;
-
-        // split between header and main stat blocks
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 98px 1fr;
-        grid-column-gap: 10px;
-        grid-row-gap: 15px;
-    }
-
-    /*
-    Header
-    */
-    .sheet-header {
-        grid-column-start: 1;
-        grid-column-end: 2;
+      .encumbrance-fill {
         grid-row-start: 1;
         grid-row-end: 2;
-
-        hr {
-            border: .5px solid @colorBlue;
-        }
-
-        // 3x2
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(2, 1fr);
-        grid-column-gap: 10px;
-        grid-row-gap: 2px;
-
-
-        .name-plate {
-            .player-text() {
-                font-family: "Play";
-            }
-
-            font-style: normal;
-            font-weight: normal;
-            font-size: 50px;
-            line-height: 58px;
-
-            justify-self: center;
-            text-align: center;
-            grid-column-start: 1;
-            grid-column-end: 4;
-
-            // would be nice to auto-resize the height of the input box.
-            .char-name-input {
-                height: 50px;
-                text-transform: uppercase;
-            }
-        }
-
-        .char-class {
-            .player-text();
-            font-family: "Play";
-            font-size: 18px;
-            grid-column-start: 1;
-            grid-column-end: 4;
-            grid-row-start: 2;
-            grid-row-end: 3;
-            border-top: .5px solid @colorBlue;
-            text-align: center;
-            padding-top: 10px;
-
-            .char-class-input {
-                font-size: 18px;
-                text-transform: uppercase;
-                height: 32px;
-            }
-
-        }
-
-
-    }
-
-    .sheet-body {
         grid-column-start: 1;
         grid-column-end: 2;
-        grid-row-start: 2;
-        grid-row-end: 3;
+        background-color: @colorEncumbranceFill;
+        border-radius: 5px 0px 0px 5px;
 
-        border-radius: 5px;
-        background-color: @colorStatBG;
+        &.encumbered {
+          border-radius: 5px;
+          background-color: @colorOrangeShadow;
+        }
+      }
+
+      .encumbrance-data {
+        grid-row-start: 1;
+        grid-row-end: 2;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        .data-text();
+        padding-left: 10px;
+      }
+
+      &.encumbered {
+        border: 1px solid @colorWhite;
+      }
+    }
+
+    .bio-stats {
+      padding: 0 5px 0 0;
+      margin-top: 24px;
+      margin-left: 15px;
+      margin-right: 15px;
+
+      .bio-category-header {
+        .category-header();
+        text-align: center;
+
+        &:first-of-type {
+          align-items: center;
+          display: flex;
+          justify-content: center;
+          margin-bottom: 1em;
+        }
+      }
+
+      .bio-category-name {
+        .category-column-name();
+      }
+
+      .bio-text {
+        font-size: 20px;
+        text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+      }
+
+      .bio-input {
+        .player-text();
+        .bio-text();
+        font-size: 14px;
+        height: 25px;
+        text-align: center;
+        margin-bottom: 8px;
+        font-family: "Chivo";
+        outline: none;
+        box-shadow: none;
+      }
+
+      .bio-checkbox {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-color: none;
+        background: url("icons/checkbox-unchecked.svg") center no-repeat;
+        background-size: 21px;
+        width: 22px;
+        transition: background-color 275ms ease;
+        border-radius: 3px;
+
+        &:hover {
+          background-color: @colorPlaceHolderPlayerText;
+        }
+
+        &:checked {
+          background: url("icons/checkbox-checked.svg") center no-repeat;
+          background-size: 21px;
+        }
+      }
+
+      .bio-block {
+        .animated-hover();
+        border-radius: 3px;
+        border: 1px solid @colorTableSeparator;
         display: flex;
         flex-direction: column;
+        flex: 0 0 49%;
+        margin-bottom: 12px;
+        align-items: center;
 
-        .navigation {
-
-            padding: 2px;
-            display: flex;
-            flex-direction: row;
-            border-radius: 5px 5px 0px 0px;
-            height: 24px;
-            border: none;
-            background-color: @colorBlueTransparent;
-            justify-content: space-between;
-
-            .item.active {
-                text-decoration: none;
-                color: @colorWhite;
-            }
-
-            .nav-link {
-                .data-text-bold();
-                text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.25);
-                color: @colorBlue;
-                transition: text-shadow 275ms ease;
-
-                &.selected {
-                    color: @colorWhite;
-                    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.35);
-                }
-
-                &:hover {
-                    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.35);
-                }
-
-                text-transform: uppercase;
-                font-size: 18px;
-                line-height: 19px;
-                text-align: center;
-                flex: 1;
-            }
+        .bio-block-title {
+          .data-text();
+          font-weight: bold;
+          color: @colorTableHeader;
+          text-transform: uppercase;
+          margin-top: 8px;
         }
 
-        .panel {
-            display: flex;
-            flex-direction: column;
+        select {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          .player-text();
+          .bio-text();
+          line-height: 25px;
+          width: 280px;
+          height: 25px;
+          padding: 0px 35px 0px 10px;
+          margin-top: 0.6em;
 
-            // since I rolled my own nav from scratch and didn't utilize flexrow/flexcol
-            // I needed to recognize when a panel should be hidden.
-            &.tab[data-tab] {
-                display: none;
-            }
+          border: none;
+          background: url("icons/drop-down-arrow.svg") 96% / 15% no-repeat
+            @colorBlueTransparent;
+          background-position: right 0.7em top 50%;
 
-            &.tab[data-tab].active {
-                display: flex;
-            }
+          &:focus {
+            box-shadow: none;
+          }
+
+          option {
+            background-color: @colorItemEntryBG;
+          }
         }
+      }
 
-        .bg-attr(@image) {
-            background-repeat: no-repeat;
-            background-image: url(@image);
-            background-position: center center;
-            background-clip: padding-box;
+      .bio-block-list {
+        justify-content: space-between;
+      }
+
+      .relations-list {
+        max-height: 229px;
+        margin: 0px;
+        padding: 0px;
+
+        .relation-name {
+          flex: 2.5 0 0;
+          text-align: left;
+          margin-bottom: 0px; //zeroing out margin of input box.
         }
-
-        /*-------------------------------------*/
-        /* Attributes List*/
-        /*-------------------------------------*/
-        .attribute-list {
-            list-style: none;
-            padding: 0px;
-            justify-content: space-around;
-            margin-top: 10px;
-            margin-bottom: 0px;
-
-
-            display: flex;
-            flex-direction: row;
-
-            .attr-item {
-                align-items: center;
-                .animated-hover();
-            }
-
-            .attr-block {
-                border: 3px solid @colorBlue;
-                box-sizing: border-box;
-                border-radius: 3px;
-                background-color: rgba(19, 27, 53, 0.25);
-                flex-basis: 70px; // height since this is in a column
-                height: 70px; // not sure why i have to enable both...!?
-                width: 116px;
-            }
-
-            .bg-wits {
-                .bg-attr("icons/icon-wits-bg.svg");
-            }
-
-            .bg-strength {
-                .bg-attr("icons/icon-strength-bg.svg");
-            }
-
-            .bg-empathy {
-                .bg-attr("icons/icon-empathy-bg.svg");
-
-            }
-
-            .bg-agility {
-                .bg-attr("icons/icon-agility-bg.svg");
-            }
-
-            .attr-num-display {
-                .player-text();
-                font-size: 48px;
-                font-weight: bold;
-                line-height: 60px;
-
-                .attr-input {
-                    font-weight: bold;
-                    font-size: 48px;
-                    height: 50px;
-                    text-align: center;
-                    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
-                }
-            }
-
-            .attr-name {
-                .data-text();
-                font-size: 14px;
-                letter-spacing: @letterSpacingSmaller;
-                text-transform: uppercase;
-                color: @colorBlue;
-            }
-
-            .attr-rollable {
-
-                img {
-                    border: none;
-                    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-                    width: 44px;
-                    height: 44px;
-                }
-            }
-        }
-
-        /*-------------------------------------*/
-        /* Skills List*/
-        /*-------------------------------------*/
-        .skills-list-group {
-            ol {
-
-                list-style: none;
-                padding: 0px;
-            }
-
-            .single-skill-list {
-
-                margin-left: 10px;
-                margin-right: 10px;
-            }
-
-            justify-content: space-around;
-
-            .skill-header {
-                .data-text();
-                font-size: 14px;
-                text-align: center;
-                text-transform: uppercase;
-            }
-
-            .skill {
-                .animated-hover();
-                .line-item-entry();
-                align-items: center;
-                height: 30px;
-
-
-                .rollable {
-                    &:hover {
-                        text-shadow: 0 0 5px @colorOrangeShadow;
-
-                        // we trigger this here so we have a bigger hit area
-                        .skill-image {
-                            background-image: url("icons/rolling-dices.svg");
-                            background-size: 30px;
-                        }
-                    }
-
-                }
-
-                h4 {
-                    .data-text();
-                    color: @colorBlue;
-                    font-weight: bold;
-                    font-size: 13px;
-                    flex: 1;
-                    margin: 0px;
-                    line-height: 30px;
-                }
-
-                .skill-image {
-                    transition: 275ms background-size ease;
-                    background-position: center center;
-                    background-repeat: no-repeat;
-                    background-size: 0px;
-                    height: 30px;
-                    flex-basis: 30px;
-                    margin-right: 5px;
-
-
-                }
-
-                .attr-tag-helper {
-                    height: 30px;
-                    flex-basis: 30px;
-                    background-size: 25px;
-                    flex-basis: 80px;
-                }
-
-                .bg-skill-wits {
-                    .attr-tag-helper();
-                    .bg-attr("icons/skill-tag-wits.svg");
-                }
-
-                .bg-skill-strength {
-                    .attr-tag-helper();
-                    .bg-attr("icons/skill-tag-strength.svg");
-                    background-size: 20px;
-                }
-
-                .bg-skill-empathy {
-                    .attr-tag-helper();
-                    .bg-attr("icons/skill-tag-empathy.svg");
-
-                }
-
-                .bg-skill-agility {
-                    .attr-tag-helper();
-                    .bg-attr("icons/skill-tag-agility.svg");
-                }
-
-                .skill-value-display {
-                    flex-basis: 45px;
-                }
-
-                .skill-input {
-                    font-weight: bold;
-                    font-size: 18px;
-                    height: 25px;
-                    text-align: center;
-                }
-            }
-        }
-
-
-        /*-------------------------------------*/
-        /* Critical Injuries*/
-        /*-------------------------------------*/
-        .critical-injuries-list {
-            list-style: none;
-            overflow-y: auto;
-            max-height: 146px;
-            height: 146px;
-            padding: 0px;
-            align-items: center;
-            margin: 0 10px;
-
-            .crit-header {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                border-radius: 3px;
-                background-color: @colorBlueTransparent;
-                margin-bottom: 5px;
-                height: 24px;
-                padding-left: 5px;
-                padding-right: 5px;
-
-                h4 {
-                    .data-text();
-                    font-size: 14px;
-                    text-align: center;
-                    text-transform: uppercase;
-                }
-            }
-
-            .injury {
-                align-items: center;
-                .line-item-entry();
-                height: 26px;
-            }
-
-            .crit-add-controls {
-                .data-text();
-                font-size: 14px;
-                text-align: center;
-                text-transform: uppercase;
-                padding-right: 2px;
-                color: @colorBlue;
-
-
-            }
-
-            .crit-controls {
-                flex: 0 0 80px;
-                color: @colorDarkBlue;
-                display: flex;
-                justify-content: flex-end;
-                margin-right: 5px;
-            }
-
-            .crit-control-widget {
-                flex-basis: 20px;
-                text-align: right;
-                .hover-header-buttons();
-            }
-
-            .injury-display {
-                .player-text();
-                font-size: 14px;
-                font-weight: bold;
-                color: @colorOrange;
-            }
-
-            .injury-description {
-                color: @colorBlue;
-                flex: 0 0 400px;
-                width: 400px; // tried to get pure flex working here with no avail.
-
-                span {
-                    white-space: nowrap !important;
-                }
-
-                p {
-                    white-space: nowrap;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                }
-            }
-        }
-
-        /*-------------------------------------*/
-        /* List Mixins */
-        /*-------------------------------------*/
-        .vertical-list {
-            list-style: none;
-            overflow-y: auto;
-            max-height: 580px;
-            padding: 0 5px 0 0;
-            margin-top: 24px;
-            margin-left: 32px;
-            margin-right: 32px;
-
-        }
-
-        .category-header {
-            .data-text();
-            border-radius: 3px;
-            background-color: @colorBlueTransparent;
-            height: 24px;
-            margin-bottom: 5px;
-            align-content: center;
-            align-items: center;
-            margin-top: 20px;
-
-            &:first-of-type {
-                margin-top: 0px;
-            }
-        }
-
-        .category-column-name {
-            font-size: 14px;
-            margin: 0px 0px 0px 5px;
-            text-transform: uppercase;
-        }
-
-
-        .item-list-controls {
-            text-transform: uppercase;
-            flex: 0 0 100px;
-            margin-top: 2px;
-            text-align: right;
-            margin-right: 7px;
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        .item-status-icon {
-            color: @colorDarkBlue;
-            flex-basis: 20px;
-        }
-
-        .item-control-widget {
-            .item-status-icon();
-            .hover-header-buttons();
-        }
-
-        .item-control-add-widget {
-            .item-control-widget();
-            color: @colorBlue;
-            flex-basis: 100px;
-        }
-
-        .item-entry {
-            align-items: center;
-            .data-text();
-            color: @colorWhite;
-            margin-bottom: 2px;
-        }
-
-        .item-entry-name-rollover {
-            transition: transform 275ms ease;
-
-            &:hover {
-                transform: translateX(5px);
-            }
-
-        }
-
-        .item-entry-name {
-            .data-text-semibold();
-            color: @colorOrange;
-            font-size: 15px;
-            cursor: pointer;
-
-        }
-
-        .item-bg {
-            background-color: @colorStatItemEntryBG;
-
-            border-radius: 3px;
-            padding-left: 5px;
-            padding-right: 5px;
-            flex: 0 0 100%;
-
-            .flicker-anim(lighten(@colorStatItemEntryBG, 30%), @colorStatItemEntryBG);
-
-            &:hover {
-                animation: flicker 1.2s;
-                animation-fill-mode: forwards;
-            }
-        }
-
-        .item-summary {
-
-            flex: 0 0 100%;
-            margin-top: 2px;
-            padding-bottom: 2px;
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        .item-summary-wrapper {
-            background-color: @colorStatItemEntryBG;
-            border-radius: 3px;
-            flex: 0 0 570px;
-            padding-left: 15px;
-            padding-right: 15px;
-            margin-left: 25px;
-        }
-
-        .item-properties {
-            flex: 1;
-            margin-bottom: 5px;
-
-            .tag {
-                .data-text();
-                font-size: 12px;
-                border-radius: 3px;
-                border: 1px solid @colorBlue;
-                padding: 0 5px 0 5px;
-                margin-right: 10px;
-            }
-        }
-
-
-
-        /*-------------------------------------*/
-        /* Talent List */
-        /*-------------------------------------*/
-
-        .talent-list {
-            .vertical-list();
-
-            .talent-category-header {
-                .category-header();
-            }
-
-            .talent-category-name {
-                .category-column-name();
-            }
-
-            .talent-controls {
-                .item-list-controls();
-            }
-
-            .talent-control-widget {
-                .item-control-widget();
-            }
-
-            .talent-control-add-widget {
-                .item-control-add-widget();
-            }
-
-            .talent {
-                .item-entry();
-            }
-
-            .talent-bg {
-                .item-bg();
-            }
-
-            .talent-name {
-                .item-entry-name();
-                .item-entry-name-rollover();
-            }
-
-            .expanded {
-                height: auto;
-            }
-        }
-
-
-
-        /*-------------------------------------*/
-        /* Item List */
-        /*-------------------------------------*/
-        .gear-wrapper {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 600px;
-        }
-
-        .gear-list {
-            .vertical-list();
-            margin-left: 15px;
-            margin-right: 15px;
-            max-height: 570px;
-
-            .gear-category-header {
-                .category-header();
-            }
-
-            .gear-category-name {
-                .category-column-name();
-
-                &.center {
-                    text-align: center;
-                }
-
-                &.first {
-                    flex: 2.5;
-                }
-            }
-
-            .gear-controls {
-                .item-list-controls();
-            }
-
-            .gear-control-widget {
-                .item-control-widget();
-            }
-
-            .gear-control-add-widget {
-                .item-control-add-widget();
-            }
-
-            .gear-restricted {
-                .item-status-icon();
-            }
-
-            .gear {
-                .item-entry();
-            }
-
-            .gear-name {
-                .item-entry-name();
-                flex: 2.5 0 0;
-                align-items: center;
-
-                .expandable-info {
-                    .item-entry-name-rollover();
-                }
-            }
-
-            .gear-row-data {
-                .data-text();
-                font-size: 14px;
-                text-align: center;
-            }
-
-            .gear-bg {
-                .item-bg();
-                align-items: center;
-                padding-top: 5px;
-                padding-bottom: 5px;
-
-                &.equipped {
-                    background-color: @colorEquipBG;
-                    .flicker-anim(lighten(@colorEquipBG, 30%), @colorEquipBG);
-
-                    &:hover {
-                        animation: flicker 1.2s;
-                        animation-fill-mode: forwards;
-                    }
-                }
-            }
-
-            .gear-quantity-input {
-                .player-text();
-                font-size: 14px;
-                box-shadow: none;
-                border: none;
-                background-color: @colorTransparent;
-                text-align: center;
-                width: 50px;
-            }
-
-            .item-toggle {
-
-                &.equipped {
-                    color: @colorOrange;
-                    transform: scale(1.05);
-                }
-            }
-
-
-            .gear-img-container {
-                height: 42px;
-                flex: 0 0 42px;
-                border-radius: 22px;
-                background-repeat: no-repeat;
-                background-position: center;
-                background-size: contain;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                margin-right: 5px;
-
-                &.rollable {
-                    transition: background-image 275ms ease, transform 275ms ease;
-
-                    &:hover {
-                        background-image: url('icons/rolling-dices-orange.svg') !important;
-                        transform: scale(1.05);
-                    }
-                }
-            }
-
-            .gear-img {
-                width: 35px;
-                height: 35px;
-                border: none;
-            }
-        }
-
-        .encumbrance-bar {
-            background-color: @colorEncumbranceBG;
-            border-radius: 5px;
-            margin-left: 15px;
-            margin-right: 15px;
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-template-rows: 1fr;
-
-            .encumbrance-fill {
-                grid-row-start: 1;
-                grid-row-end: 2;
-                grid-column-start: 1;
-                grid-column-end: 2;
-                background-color: @colorEncumbranceFill;
-                border-radius: 5px 0px 0px 5px;
-
-                &.encumbered {
-                    border-radius: 5px;
-                    background-color: @colorOrangeShadow;
-                }
-            }
-
-            .encumbrance-data {
-                grid-row-start: 1;
-                grid-row-end: 2;
-                grid-column-start: 1;
-                grid-column-end: 2;
-                .data-text();
-                padding-left: 10px;
-
-            }
-
-            &.encumbered {
-                border: 1px solid @colorWhite;
-            }
-        }
-
-
-        .bio-stats {
-            padding: 0 5px 0 0;
-            margin-top: 24px;
-            margin-left: 15px;
-            margin-right: 15px;
-
-            .bio-category-header {
-                .category-header();
-                text-align: center;
-            }
-
-            .bio-category-name {
-                .category-column-name();
-            }
-
-            .bio-text {
-                font-size: 20px;
-                text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
-            }
-
-            .bio-input {
-                .player-text();
-                .bio-text();
-                font-size: 20px;
-                height: 25px;
-                text-align: center;
-                margin-bottom: 8px;
-            }
-
-            .bio-checkbox {
-                -webkit-appearance: none;
-                -moz-appearance: none;
-                appearance: none;
-                background-color: none;
-                background: url("icons/checkbox-unchecked.svg") center no-repeat;
-                background-size: 21px;
-                width: 22px;
-                transition: background-color 275ms ease;
-                border-radius: 3px;
-
-                &:hover {
-                    background-color: @colorPlaceHolderPlayerText;
-                }
-
-                &:checked {
-                    background: url("icons/checkbox-checked.svg") center no-repeat;
-                    background-size: 21px;
-                }
-
-            }
-
-            .bio-block {
-
-                .animated-hover();
-                background-color: @colorStatItemEntryBG;
-                border-radius: 3px;
-                border: 1px solid @colorDarkBlue;
-                display: flex;
-                flex-direction: column;
-                flex: 0 0 49%;
-                margin-bottom: 12px;
-                align-items: center;
-
-                .bio-block-title {
-                    .data-text();
-                    letter-spacing: 0.2em;
-                    color: @colorDarkBlue;
-                    text-transform: uppercase;
-                    margin-top: 8px;
-                }
-
-                select {
-                    -webkit-appearance: none;
-                    -moz-appearance: none;
-                    appearance: none;
-                    .player-text();
-                    .bio-text();
-                    line-height: 25px;
-                    width: 280px;
-                    height: 25px;
-                    padding: 0px 35px 0px 10px;
-
-                    border: none;
-                    background: url("icons/drop-down-arrow.svg") 96% / 15% no-repeat @colorBlueTransparent;
-                    background-position: right .7em top 50%;
-
-                    &:focus {
-                        box-shadow: none;
-                    }
-
-
-                    option {
-                        background-color: @colorItemEntryBG;
-                    }
-                }
-            }
-
-            .bio-block-list {
-                justify-content: space-between;
-            }
-
-            .relations-list {
-                max-height: 229px;
-                margin: 0px;
-                padding: 0px;
-
-                .relation-name {
-                    flex: 2.5 0 0;
-                    text-align: left;
-                    margin-bottom: 0px; //zeroing out margin of input box.
-                }
-            }
-
-            .biography-controls {
-                .item-list-controls();
-                flex: 0 0 20px;
-                justify-content: flex-end;
-                padding-left: 35px;
-            }
-
-            .bio-control-widget {
-                .item-control-widget();
-
-            }
-
-            .buddy-box {
-                justify-items: center;
-                justify-content: center;
-                margin-left: -40px; // for alignment fixing with buddy header.
-            }
-        }
+      }
+
+      .biography-controls {
+        .item-list-controls();
+        flex: 0 0 20px;
+        justify-content: flex-end;
+        padding-left: 35px;
+      }
+
+      .bio-control-widget {
+        .item-control-widget();
+      }
+
+      .buddy-box {
+        justify-items: center;
+        justify-content: center;
+        margin-left: -40px; // for alignment fixing with buddy header.
+      }
+    }
+  }
+
+  .charnotes {
+    .editor {
+      max-height: 590px;
+      height: 590px;
+      margin: 10px;
+      .player-text();
     }
 
-    .charnotes {
-        .editor {
-            max-height: 590px;
-            height: 590px;
-            margin: 10px;
-            .player-text();
-        }
+    .editor-edit {
+      display: block;
+      width: 40px;
+      text-align: center;
+      background-color: @colorStatItemEntryBG;
+      color: @colorDarkBlue;
+      border: 1px solid @colorDarkBlue;
+      transition: background-color 275ms ease;
 
-        .editor-edit {
-            display: block;
-            width: 40px;
-            text-align: center;
-            background-color: @colorStatItemEntryBG;
-            color: @colorDarkBlue;
-            border: 1px solid @colorDarkBlue;
-            transition: background-color 275ms ease;
-
-            &:hover {
-                text-shadow: none;
-                background-color: lighten(@colorStatItemEntryBG, 20%);
-            }
-        }
+      &:hover {
+        text-shadow: none;
+        background-color: lighten(@colorStatItemEntryBG, 20%);
+      }
     }
+  }
+
+  .stats {
+    .attributes,
+    .skills {
+      h2 {
+        color: white;
+        background-color: black;
+        border: none;
+        margin: 0;
+        padding: 0.5em;
+        font-family: "Saira", sans-serif;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 1.1em;
+        position: relative;
+      }
+
+      .toggle {
+        width: 20px;
+        height: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 5px;
+        position: absolute;
+        right: 0.6em;
+        top: 0.6em;
+        cursor: pointer;
+
+        &:hover {
+          border-color: white;
+        }
+
+        &:before {
+          content: "-";
+          font-size: 1.5em;
+          position: absolute;
+          top: -2px;
+          right: -1px;
+          display: block;
+          line-height: 20px;
+          width: 20px;
+          text-align: center;
+          font-weight: 400;
+        }
+      }
+
+      &.collapsed {
+        .collapsable {
+          display: none;
+        }
+
+        .toggle:before {
+          content: "+";
+        }
+      }
+
+      .stat-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        background: url("images/gradient.png");
+        background-size: cover;
+
+        li {
+          border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+          padding: 0 1em;
+          color: black;
+
+          &:first-child {
+            border-top: none;
+          }
+
+          display: flex;
+          align-items: center;
+
+          .stat-name {
+            width: 85%;
+            text-transform: uppercase;
+            font-weight: bold;
+          }
+
+          .stat-value {
+            width: 15%;
+
+            input {
+              border: 1px solid @colorTableSeparator;
+              background: transparent;
+              display: block;
+              padding: 0.5em;
+              font-size: 14px;
+              color: black;
+              font-family: Saira, sans-serif;
+              font-weight: bold;
+              text-align: center;
+              margin: 0.5em;
+            }
+          }
+        }
+      }
+    }
+
+    .skills {
+      margin-top: 1em;
+    }
+  }
+
+  /**
+   * Animated character info bars
+   */
+
+  .bar-bg {
+    padding: 0px 5px 0px 5px;
+    border: 1px solid @colorBarOutline;
+    border-radius: 5px;
+    background-color: @colorStatBG;
+    height: 27px;
+  }
+
+  .bar-value {
+    width: 20px;
+    text-align: center;
+    font-size: 16px;
+    color: white;
+  }
+
+  .bar-styling-helper(@fillCol, @decreaseCol) {
+    justify-content: space-between;
+    align-items: center;
+    .bar-bg();
+
+    .bar-segment {
+      border-radius: 2px;
+      box-sizing: border-box;
+      flex: 1 1 10px;
+      height: 17px;
+      margin: 3.5px 1px;
+      background-color: @colorBlack;
+      transition: background-color 275ms ease, border 275ms ease;
+    }
+
+    .hover-to-decrease {
+      // need important flag to override the current fill when decreasing.
+      background-color: @decreaseCol !important;
+    }
+
+    .hover-to-increase {
+      border: 1px solid @fillCol;
+    }
+
+    .bar-segment.on {
+      background-color: @fillCol;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+
+    .bar-segment.off {
+      background-color: @colorBlack;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  .radiation-bar {
+    .bar-styling-helper(@colorRadiationFill, @colorRadiationDecreaseFill);
+  }
+
+  .xp-bar {
+    .bar-styling-helper(@colorXPFill, @colorXPDecreaseFill);
+  }
+
+  .rep-bar {
+    .bar-styling-helper(@colorRepFill, @colorRepDecreaseFill);
+  }
+
+  .hp-bar {
+    .bar-styling-helper(@colorGreen, @colorBlood);
+  }
+
+  .mind-bar {
+    .bar-styling-helper(@colorPaleBlue, @colorDarkerBlue);
+  }
 }

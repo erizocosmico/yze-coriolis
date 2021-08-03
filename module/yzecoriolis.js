@@ -75,6 +75,12 @@ Hooks.once('init', async function () {
     return str.toLowerCase();
   });
 
+  Handlebars.registerHelper('if_empty', function (v, opts) {
+    if ((Array.isArray(v) && v.length === 0) || !v) {
+      return opts.fn(this);
+    }
+  });
+
 
   Handlebars.registerHelper('if_eq', function (a, b, opts) {
     if (a === b) {

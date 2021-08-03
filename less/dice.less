@@ -1,72 +1,117 @@
+#chat-log .message {
+  background-image: url("images/gradient.png");
+  background-size: cover;
+  border-color: rgb(17, 72, 104);
+  color: black;
+  font-family: "Chivo";
+
+  .message-header {
+    color: black;
+  }
+}
+
+#chat-form textarea {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.yzecoriolis.roll-modifier-dialog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  input {
+    width: 15%;
+    margin-left: 1em;
+    text-align: center;
+  }
+}
+
 .yzecoriolis.dice-roll {
+  .dice-title {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    text-align: center;
+  }
 
-    .coriolis-results .dice-rolls {
-        list-style: none;
-        // margin: 5px 0;
-        padding: 0;
-        overflow: hidden;
+  .coriolis-results .dice-rolls {
+    list-style: none;
+    // margin: 5px 0;
+    padding: 0;
+    overflow: hidden;
 
-        .roll {
-            line-height: 24px;
-            float: left;
-        }
+    .roll {
+      line-height: 24px;
+      float: left;
     }
+  }
 
-    .limitedSuccess {
-        color: green;
-    }
+  .dice-result h4 {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0.5em;
+    text-transform: uppercase;
+    font-family: "Saira";
+    font-size: 1.8em;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  }
 
-    .criticalSuccess {
-        color: greenyellow;
-    }
+  .limitedSuccess {
+    color: rgb(29, 119, 202);
+  }
 
-    .criticalfailure {
-        color: red;
-    }
+  .criticalSuccess {
+    color: rgb(117, 187, 11);
+  }
 
-    .dice-face {
-        width: 50px;
-        height: 50px;
-        background-position: center;
-        background-size: cover;
-        margin: 5px;
-        color: white;
-    }
+  .criticalfailure {
+    color: rgb(173, 58, 58);
+  }
 
-    .dice-1 {
-        background-image: url("images/dice-1.png") !important;
-    }
+  .dice-face {
+    width: 50px;
+    height: 50px;
+    background-position: center;
+    background-size: cover;
+    margin: 5px;
+    color: white;
+  }
 
-    .dice-2 {
-        background-image: url("images/dice-2.png") !important;
-    }
+  .dice-1 {
+    background-image: url("images/dice-1.png") !important;
+  }
 
-    .dice-3 {
-        background-image: url("images/dice-3.png") !important;
-    }
+  .dice-2 {
+    background-image: url("images/dice-2.png") !important;
+  }
 
-    .dice-4 {
-        background-image: url("images/dice-4.png") !important;
-    }
+  .dice-3 {
+    background-image: url("images/dice-3.png") !important;
+  }
 
-    .dice-5 {
-        background-image: url("images/dice-5.png") !important;
-    }
+  .dice-4 {
+    background-image: url("images/dice-4.png") !important;
+  }
 
-    .dice-6 {
-        background-image: url("images/dice-6.png") !important;
-    }
+  .dice-5 {
+    background-image: url("images/dice-5.png") !important;
+  }
+
+  .dice-6 {
+    background-image: url("images/dice-6.png") !important;
+  }
 }
 
 .yzecoriolis.dice-push {
+  text-align: center;
+  flex: 0 0 22px;
+  font-size: 12px;
+  text-align: center;
+  color: @colorTan;
 
-    text-align: center;
-    flex: 0 0 22px;
-    font-size: 12px;
-    text-align: center;
-    color: @colorTan;
-
-    a {
-        color: @colorCrimson;
-    }
+  a {
+    color: @colorCrimson;
+  }
 }

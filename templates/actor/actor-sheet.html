@@ -1,154 +1,211 @@
 <form class="{{cssClass}}" autocomplete="off">
   <div class="sheet-container">
-    <div class="key-art-container">
-      <img class="vertical-img" src="{{data.keyArt}}" data-edit="data.keyArt" title="{{actor.name}}">
-    </div>
-    <div class="gradient-overlay"></div>
-    <div class="always-visible-stats">
-      <ol class="perma-stats-list">
-        <li class="entry flexrow">
-          <div class="stat-label">{{localize "YZECORIOLIS.HitPoints"}}</div>
-          <div class="bar hp-bar fr-basic">
-            {{#each actor.hpBlocks as |on index|}}
-            {{#with ../data as | data |}}
-            {{#if on}}
-            <div class="bar-segment on" data-name="data.hitPoints.value" data-index={{index}}
-              data-current={{data.hitPoints.value}} data-min={{data.hitPoints.min}} data-max={{data.hitPoints.max}}>
-            </div>
-            {{else}}
-            <div class="bar-segment off" data-name="data.hitPoints.value" data-index={{index}}
-              data-current={{data.hitPoints.value}} data-min={{data.hitPoints.min}} data-max={{data.hitPoints.max}}>
-            </div>
-            {{/if}}
-            {{/with}}
-            {{/each}}
-            <span class="bar-value">{{data.hitPoints.value}}</span>
-          </div>
-        </li>
-        <li class="entry flexrow">
-          <div class="stat-label">{{localize "YZECORIOLIS.MindPoints"}}</div>
-          <div class="bar mind-bar fr-basic">
-            {{#each actor.mindBlocks as |on index|}}
-            {{#with ../data as | data |}}
-            {{#if on}}
-            <div class="bar-segment on" data-name="data.mindPoints.value" data-index={{index}}
-              data-current={{data.mindPoints.value}} data-min={{data.mindPoints.min}} data-max={{data.mindPoints.max}}>
-            </div>
-            {{else}}
-            <div class="bar-segment off" data-name="data.mindPoints.value" data-index={{index}}
-              data-current={{data.mindPoints.value}} data-min={{data.mindPoints.min}} data-max={{data.mindPoints.max}}>
-            </div>
-            {{/if}}
-            {{/with}}
-            {{/each}}
-            <span class="bar-value">{{data.mindPoints.value}}</span>
-          </div>
-        </li>
-        <li class="entry flexrow">
-          <div class="stat-label">{{localize "YZECORIOLIS.Radiation"}}</div>
-          <div class="bar radiation-bar fr-basic">
-            {{#each actor.radiationBlocks as |on index|}}
-            {{#with ../data as | data |}}
-            {{#if on}}
-            <div class="bar-segment on" data-name="data.radiation.value" data-index={{index}}
-              data-current={{data.radiation.value}} data-min={{data.radiation.min}} data-max={{data.radiation.max}}>
-            </div>
-            {{else}}
-            <div class="bar-segment off" data-name="data.radiation.value" data-index={{index}}
-              data-current={{data.radiation.value}} data-min={{data.radiation.min}} data-max={{data.radiation.max}}>
-            </div>
-            {{/if}}
-            {{/with}}
-            {{/each}}
-            <span class="bar-value">{{data.radiation.value}}</span>
-          </div>
-        </li>
-        <li class="entry flexrow">
-          <div class="stat-label">{{localize "YZECORIOLIS.Experience"}}</div>
-          <div class="bar xp-bar fr-basic">
-            {{#each actor.xpBlocks as |on index|}}
-            {{#with ../data as | data |}}
-            {{#if on}}
-            <div class="bar-segment on" data-name="data.experience.value" data-index={{index}}
-              data-current={{data.experience.value}} data-min={{data.experience.min}} data-max={{data.experience.max}}>
-            </div>
-            {{else}}
-            <div class="bar-segment off" data-name="data.experience.value" data-index={{index}}
-              data-current={{data.experience.value}} data-min={{data.experience.min}} data-max={{data.experience.max}}>
-            </div>
-            {{/if}}
-            {{/with}}
-            {{/each}}
-            <span class="bar-value">{{data.experience.value}}</span>
-          </div>
-        </li>
-        <li class="entry flexrow">
-          <div class="stat-label">{{localize "YZECORIOLIS.Reputation"}}</div>
-          <div class="bar rep-bar fr-basic">
-            {{#each actor.repBlocks as |on index|}}
-            {{#with ../data as | data |}}
-            {{#if on}}
-            <div class="bar-segment on" data-name="data.reputation.value" data-index={{index}}
-              data-current={{data.reputation.value}} data-min={{data.reputation.min}} data-max={{data.reputation.max}}>
-            </div>
-            {{else}}
-            <div class="bar-segment off" data-name="data.reputation.value" data-index={{index}}
-              data-current={{data.reputation.value}} data-min={{data.reputation.min}} data-max={{data.reputation.max}}>
-            </div>
-            {{/if}}
-            {{/with}}
-            {{/each}}
-            <span class="bar-value">{{data.reputation.value}}</span>
-          </div>
-        </li>
-        <li class="entry flexrow">
-          <div class="capitalize stat-label">{{localize "YZECORIOLIS.Birr"}}</div>
-          <div class="number">
-            <input class="input-value" type="text" name="data.birr" value="{{data.birr}}" data-dtype="Number" />
-          </div>
-        </li>
-        <li class="entry flexrow">
-          <div class="stat-label">{{localize "YZECORIOLIS.Icon"}}</div>
-          <div class="number">
-            <input class="input-value" placeholder={{localize "YZECORIOLIS.Icon"}} type="text" name="data.bio.icon"
-              value="{{data.bio.icon}}" data-dtype="String" />
-          </div>
-        </li>
-      </ol>
+    <div class="stats">
+      {{> "systems/yzecoriolis/templates/actor/parts/actor-sidebar.html"}}
     </div>
     <div class="char-content-wrapper">
       <header class="sheet-header">
+        <div class="char-name">
+          <input class="char-name-input" name="name" type="text" value="{{actor.name}}" placeholder="{{localize "
+            YZECORIOLIS.Name"}}" />
+        </div>
 
-        <header class="name-plate">
-          <input class="char-name-input" name="name" type="text" value="{{actor.name}}"
-            placeholder="{{localize "YZECORIOLIS.Name"}}" />
-        </header>
-        <div class="char-class">
-          <input class="char-class-input" name="data.bio.concept" type="text" value="{{data.bio.concept}}"
-            placeholder="{{localize "YZECORIOLIS.Concept"}}" />
+        <div class="char-info">
+          <div class="char-info-row">
+            <div class="char-info-col">
+              <div class="char-info-label">{{localize "YZECORIOLIS.Concept"}}</div>
+              <div class="char-info-value">
+                <input class="char-class-input" name="data.bio.concept" type="text" value="{{data.bio.concept}}"
+                placeholder="{{localize "YZECORIOLIS.Concept"}}" />
+              </div>
+            </div>
+            <div class="char-info-col">
+              <div class="char-info-label">{{localize "YZECORIOLIS.Icon"}}</div>
+              <div class="char-info-value">
+                <input class="input-value" placeholder={{localize "YZECORIOLIS.Icon" }} type="text" name="data.bio.icon"
+                  value="{{data.bio.icon}}" data-dtype="String" />
+              </div>
+            </div>
+          </div>
+          <div class="char-info-row">
+            <div class="char-info-col">
+              <div class="char-info-label">{{localize "YZECORIOLIS.HitPoints"}}</div>
+              <div class="bar hp-bar fr-basic">
+                {{#each actor.hpBlocks as |on index|}}
+                {{#with ../data as | data |}}
+                {{#if on}}
+                <div class="bar-segment on" data-name="data.hitPoints.value" data-index={{index}}
+                  data-current={{data.hitPoints.value}} data-min={{data.hitPoints.min}} data-max={{data.hitPoints.max}}>
+                </div>
+                {{else}}
+                <div class="bar-segment off" data-name="data.hitPoints.value" data-index={{index}}
+                  data-current={{data.hitPoints.value}} data-min={{data.hitPoints.min}} data-max={{data.hitPoints.max}}>
+                </div>
+                {{/if}}
+                {{/with}}
+                {{/each}}
+                <span class="bar-value">{{data.hitPoints.value}}</span>
+              </div>
+            </div>
+            <div class="char-info-col">
+              <div class="char-info-label">{{localize "YZECORIOLIS.MindPoints"}}</div>
+              <div class="bar mind-bar fr-basic">
+                {{#each actor.mindBlocks as |on index|}}
+                {{#with ../data as | data |}}
+                {{#if on}}
+                <div class="bar-segment on" data-name="data.mindPoints.value" data-index={{index}}
+                  data-current={{data.mindPoints.value}} data-min={{data.mindPoints.min}} data-max={{data.mindPoints.max}}>
+                </div>
+                {{else}}
+                <div class="bar-segment off" data-name="data.mindPoints.value" data-index={{index}}
+                  data-current={{data.mindPoints.value}} data-min={{data.mindPoints.min}} data-max={{data.mindPoints.max}}>
+                </div>
+                {{/if}}
+                {{/with}}
+                {{/each}}
+                <span class="bar-value">{{data.mindPoints.value}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="char-info-row">
+            <div class="char-info-col">
+              <div class="char-info-label">{{localize "YZECORIOLIS.Radiation"}}</div>
+              <div class="bar radiation-bar fr-basic">
+                {{#each actor.radiationBlocks as |on index|}}
+                {{#with ../data as | data |}}
+                {{#if on}}
+                <div class="bar-segment on" data-name="data.radiation.value" data-index={{index}}
+                  data-current={{data.radiation.value}} data-min={{data.radiation.min}} data-max={{data.radiation.max}}>
+                </div>
+                {{else}}
+                <div class="bar-segment off" data-name="data.radiation.value" data-index={{index}}
+                  data-current={{data.radiation.value}} data-min={{data.radiation.min}} data-max={{data.radiation.max}}>
+                </div>
+                {{/if}}
+                {{/with}}
+                {{/each}}
+                <span class="bar-value">{{data.radiation.value}}</span>
+              </div>
+            </div>
+
+            <div class="char-info-col">
+              <div class="char-info-label">{{localize "YZECORIOLIS.Experience"}}</div>
+              <div class="bar xp-bar fr-basic">
+                {{#each actor.xpBlocks as |on index|}}
+                {{#with ../data as | data |}}
+                {{#if on}}
+                <div class="bar-segment on" data-name="data.experience.value" data-index={{index}}
+                  data-current={{data.experience.value}} data-min={{data.experience.min}} data-max={{data.experience.max}}>
+                </div>
+                {{else}}
+                <div class="bar-segment off" data-name="data.experience.value" data-index={{index}}
+                  data-current={{data.experience.value}} data-min={{data.experience.min}} data-max={{data.experience.max}}>
+                </div>
+                {{/if}}
+                {{/with}}
+                {{/each}}
+                <span class="bar-value">{{data.experience.value}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="char-info-row">
+            <div class="char-info-col">
+              <div class="char-info-label">{{localize "YZECORIOLIS.Reputation"}}</div>
+              <div class="bar rep-bar fr-basic">
+                {{#each actor.repBlocks as |on index|}}
+                {{#with ../data as | data |}}
+                {{#if on}}
+                <div class="bar-segment on" data-name="data.reputation.value" data-index={{index}}
+                  data-current={{data.reputation.value}} data-min={{data.reputation.min}} data-max={{data.reputation.max}}>
+                </div>
+                {{else}}
+                <div class="bar-segment off" data-name="data.reputation.value" data-index={{index}}
+                  data-current={{data.reputation.value}} data-min={{data.reputation.min}} data-max={{data.reputation.max}}>
+                </div>
+                {{/if}}
+                {{/with}}
+                {{/each}}
+                <span class="bar-value">{{data.reputation.value}}</span>
+              </div>
+            </div>
+
+            <div class="char-info-col">
+              <div class="char-info-label">{{localize "YZECORIOLIS.Birr"}}</div>
+              <div class="char-info-value">
+                <input class="input-value" type="text" name="data.birr" value="{{data.birr}}" data-dtype="Number" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="critical-injuries">
+          <ul class="critical-injury-list">
+            <li class="critical-injury-category-header flexrow">
+              <span class="critical-injury-category-name flexrow">{{localize "YZECORIOLIS.CriticalInjuries"}}</span>
+              {{#if owner}}
+              <div class="critical-injury-controls">
+                <a class="critical-injury-control-add-widget item-create" title='{{localize "YZECORIOLIS.CreateCriticalInjury"}}' {{#each
+                  actor.injuryDataSet as |v k|}}data-{{k}}="{{v}}" {{/each}}>
+                  <i class="fas fa-plus"></i> {{localize "YZECORIOLIS.Add"}}
+                </a>
+              </div>
+              {{/if}}
+            </li>
+            {{#if_empty actor.injuries}}
+            <li class="critical-injury item flexrow">
+              <span class="no-rows">No hay heridas críticas.</span>
+            </li>
+            {{/if_empty}}
+            {{#each actor.injuries as |injury id|}}
+            <li class="critical-injury item flexrow" data-item-id="{{injury._id}}">
+              <div class="critical-injury-bg flexrow">
+                <div class="critical-injury-name flexrow">
+                  <span>{{injury.name}}</span>
+                </div>
+                <div class="critical-injury-description flexrow">
+                  {{!-- we're putting in the raw output here since description is already html markup from tinyMCE--}}
+                  <span>{{{injury.data.description}}}</span>
+                </div>
+                <div class="critical-injury-controls">
+                  <a class="critical-injury-control-widget item-edit" title={{localize "YZECORIOLIS.EditCriticalInjury" }}>
+                    <i class="fas fa-edit"></i></a>
+                  <a class="critical-injury-control-widget item-delete" title={{localize "YZECORIOLIS.DeleteCriticalInjury" }}><i
+                      class="fas fa-trash"></i></a>
+                </div>
+              </div>
+            </li>
+            {{/each}}
+          </ul>
         </div>
       </header>
       <div class="sheet-body">
         <nav class="navigation tabs" data-group="primary">
-          <a class="item nav-link active" data-tab="stats">{{localize "YZECORIOLIS.SheetStats"}}</a>
+          {{#if_eq actor.type 'npc'}}
+          <a class="item nav-link active" data-tab="data">{{localize "YZECORIOLIS.SheetTalentsItems"}}</a>
+          {{/if_eq}}
+          {{#if_eq actor.type 'character'}}
+          <a class="item nav-link active" data-tab="gear">{{localize "YZECORIOLIS.SheetItems"}}</a>
           <a class="item nav-link" data-tab="talents">{{localize "YZECORIOLIS.SheetTalents"}}</a>
-          <a class="item nav-link" data-tab="gear">{{localize "YZECORIOLIS.SheetItems"}}</a>
           <a class="item nav-link" data-tab="bio">{{localize "YZECORIOLIS.SheetBio"}}</a>
+          {{/if_eq}}
           <a class="item nav-link" data-tab="charnotes">{{localize "YZECORIOLIS.CharNotes"}}</a>
         </nav>
 
         <section class="sheet-panels">
-          {{!-- Stats Tab --}}
-          {{> "systems/yzecoriolis/templates/actor/parts/actor-stats.html"}}
+          {{#if_eq actor.type 'npc'}}
+          {{> "systems/yzecoriolis/templates/actor/parts/actor-npc.html"}}
+          {{/if_eq}}
+
+          {{#if_eq actor.type 'character'}}
+          {{!-- Gear Tab --}}
+          {{> "systems/yzecoriolis/templates/actor/parts/actor-gear.html"}}
 
           {{!-- Talents Tab --}}
           {{> "systems/yzecoriolis/templates/actor/parts/actor-talents.html"}}
 
-          {{!-- Gear Tab --}}
-          {{> "systems/yzecoriolis/templates/actor/parts/actor-gear.html"}}
-
           {{!-- Bio Tab --}}
           {{> "systems/yzecoriolis/templates/actor/parts/actor-bio.html"}}
+          {{/if_eq}}
 
           {{!-- Notes Tab --}}
           <div class="tab charnotes" data-group="primary" data-tab="charnotes">
